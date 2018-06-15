@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <input type="text" v-model="number">
+            <button type="button" v-click="increment"></button>
+        </form>
+        <h3 v-bind="number"></h3>
+    </div>
+</body>
+<script>
+    // 先定义一个构造函数，定义初始化构造方法_init函数
+    function myVue(options){
+        this._init(options);
+    }
+    myVue.prototype._init = function(options){
+        this.$options = options;
+        this.$el = options.el;
+        this.$data = options.data;
+        this.$methods = options.methods;
+        this._obverse(this.$data);
+    };
+    // 接下来实现_observer函数对data进行处理，重写data的set和get函数
+    myVue.prototype._observe = function(obj){
+        var value;
+        // 遍历obj对象
+        for(key in obj){
+            // 如果key仍然是对象的话，要再次调用_observe方法进行遍历
+            if(obj.hasOwnProperty(key)){
+                value = obj[key];
+                if(typeof(value) === 'object'){
+                    this._observe(value);
+                }
+                Object.defineProperty(obj, key, {
+                    enumerable: true,
+                    configurable: true,
+                    get: function(){
+                        console.log(`获取${value}`);
+                        return value;
+                    },
+                    set: function(newValue){
+                        console.log(`更新${newVal}`);
+                        if(value !== newVal){
+                            value = newVal;
+                        }
+                    }
+                })
+            }
+        }
+    };
+    // 接下来就是写一个指令类Watcher,用来绑定dom元素，实现对DOM元素的更新
+    function Watcher(name, el, vm, exp, attr){
+        this.name = name;  //指令名称
+        this.el = el;  //指令对应的DOM元素
+        this.vm = vm;  //指令所属的vue实例
+        this.exp = exp; //指令对应的值
+        this.attr = attr;  //绑定的属性值
+        this.update();
+    }
+    Watcher.prototype.update = function(){
+        this.el[this.attr] = this.vm.$data[this.exp];
+    };
+
+    myVue.prototype._complie = function(root){
+
+    }
+</script>
+</html>

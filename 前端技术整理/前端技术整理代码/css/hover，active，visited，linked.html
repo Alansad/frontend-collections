@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*未访问的链接*/
+        a:link{
+            color: #000;
+        }
+        /*跳转的时候短暂触发一下,active要放在hover后面才生效，不然hover会覆盖active的样式，点一下，active触发了，但是鼠标还没来得及离开，会触发hover，样式覆盖了active的样式*/
+        /*同理visited应该也要放到hover的后面，但是active和visited的顺序还不确定*/
+        a:visited{
+            color: green;
+        }
+        /*鼠标在链接上的时候*/
+        a:hover{
+            color: yellow;
+        }
+        a:active{
+            color: red;
+        }
+        /*事实证明，active要放在visited后面才有效,visited是实时触发的*/
+        /*最后的顺序是link，visited，hover，active*/
+        /*lvha*/
+        /*lvfha*/
+    </style>
+</head>
+<body>
+<a href="http://www.baidu.com">a</a>
+</body>
+</html>

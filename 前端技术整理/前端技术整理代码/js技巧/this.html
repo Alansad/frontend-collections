@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // this的指向在函数定义的时候是确定不了的，只有执行的时候才能够确定this到底指向谁
+    // 实际上this的最终指向是那个调用它的对象
+//    function a(){
+//        var user = "追梦子";
+//        console.log(this.user);
+//        console.log(this);
+//    }
+//    a();    //这儿的this指向的是window,等同于window.a()
+//   var o = {
+//       a: 10,
+//       b: {
+//           a: 12,
+//           fn: function(){
+//               console.log(this.a);
+//           }
+//       }
+//   };
+//   o.b.fn();   // this指向的只是它的上一级对象
+//    var o = {
+//        a: 10,
+//        b: {
+//            a: 12,
+//            fn: function() {
+//                console.log(this.a);
+//                console.log(this);
+//            }
+//        }
+//    }
+//    var j = o.b.fn;
+//    j();    //这里因为是把fn赋给了j，最后调用j方法的对象是window，所以this指向window
+    // 构造函数版this
+
+    // 当this碰到return时情况不太一样
+//    function fn(){
+//        this.user = '追梦子';
+//        return {};
+//    }
+//    var o = new fn();
+//    console.log(o.user);
+//    function fn(){
+//        this.user = '追梦子';
+//        return function(){
+//
+//        }
+//    }
+//    var o = new fn();
+//    console.log(o.user);
+//    function fn(){
+//        this.user = '追梦子';
+//        return 1;
+//    }
+//    var o = new fn();
+//    console.log(o.user);
+//    function fn(){
+//        this.user = '追梦子';
+//        return undefined;
+//    }
+//    var o = new fn();
+//    console.log(o.user);
+
+    // 如果返回的是一个对象，那么this指向的是返回的那个对象，不然就是指向对象的示例
+    // 虽然null也是对象，但是不会指向null，undefined是指，如果返回的是这两种,还是会指向对象实例
+//    var name = '小王';
+//    var age = 17;
+//    var obj = {
+//        name: '小张',
+//        objAge: this.age,
+//        myFun: function(){
+//            console.log(this.name + '年龄' + this.age);
+//        }
+//    };
+//    console.log(obj.objAge);  // this指向window
+//    obj.myFun();   // this指向obj
+    var fav = '盲僧';
+    function shows(){
+        console.log(this.fav);
+    }
+    shows();  // this指向window
+</script>
+</html>

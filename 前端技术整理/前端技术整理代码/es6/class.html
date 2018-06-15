@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+//    class Point{
+//        constructor(x,y){
+//            this.x = x;
+//            this.y = y;
+//        }
+//        toString(){
+//            return '(' + this.x + ',' + this.y + ')';
+//        }
+//    }
+    // 定义类的方法时，不需要加上function这个关键字
+    // 类的数据类型是函数，类本身就指向构造函数
+    // 由于类的方法都在prototype对象上，所以类的新方法可以添加在prototype对象上面
+    // Object.assgin()可以很方便地一次向类添加多个方法
+//    class Point{
+//
+//    }
+//    Object.assign(Point.prototype, {
+//        toString(){
+//            console.log('toString');
+//        },
+//        toValue(){
+//            console.log('toValue');
+//        }
+//    })
+//    var b = new Point();
+//    b.toString();
+//    b.toValue();
+
+    // super关键字
+    class A{
+
+    }
+    class B extends A{
+       constructor(){
+           super();  //这里的super()代表调用父类的构造函数,这是必须的，否则javascript引擎会报错
+           // super内部的this指向的是B
+           // 因此super()在这里相当于 A.prototype.constructor.call(this)
+           // super只能用在子类的构造函数之中，不然就会报错
+       }
+    }
+</script>
+</html>

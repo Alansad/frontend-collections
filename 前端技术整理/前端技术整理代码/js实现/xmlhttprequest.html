@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+//    function getXhr(){
+//        if(typeof XMLHttpRequest !== 'undefined'){
+//            return new XMLHttpRequest();
+//        }
+//    }
+//    var xhr = getXhr();
+//    // open这个方法不会发送请求，但是会初始化一个请求准备发送，第三个参数默认是true，也就是异步的
+//    xhr.open('get', 'example.php', false);
+//    // GET请求，发送的值为空，一般写为null
+//    xhr.open('GET', url);
+//    xhr.send(null);
+//    //POST请求，要模拟表单提交请求的话就将Content-type头部信息设置为application/x-www-from-urlencoded,并且发送的是一个经过了序列化后的字符串
+//    xhr.open('POST', url);
+//    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+//    //xhr对象有且仅有一个事件onreadystatechange
+//    //每次xhr对象的readyState改变都会触发该事件
+//    //但是该方法不能为一个xhr对象绑定多个事件处理逻辑，即onreadystatechange只能绑定一个function，只能把这些代码全部写到这一个function里面
+//    xhr.onreadystatechange = function(){
+//        if(xhr.readyState === 4){
+//            if(xhr.status === 200){
+//                document.getElementById("unInfo").innerHTML = xhr.responseText;
+//            }
+//        }
+//    }
+    // 一次完整的XHR请求
+    // GET请求
+//    function getXhr(){
+//        if(typeof XMLHttpRequest !== 'undefined'){
+//            return new XMLHttpRequest();
+//        }
+//    }
+//    var xhr = getXhr();
+//    xhr.open('GET', '/user/checkLogin');
+//    xhr.send(null);
+//    xhr.onreadystatechange = function(res){
+//        if(xhr.readyState === 4){
+//            if(xhr.status === 200){
+//                console.log(JSON.parse(xhr.responseText));
+//            }
+//        }
+//    }
+    // POST请求
+//    var stringData = {
+//        name: 1,
+//        age: 2
+//    }
+//    function getXhr(){
+//        if(typeof XMLHttpRequest !== 'undefined'){
+//            return new XMLHttpRequest();
+//        }
+//    }
+//    var xhr = getXhr();
+//    xhr.open('POST', '/user/login');
+//    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+//    xhr.send(JSON.stringify(stringData));
+//    xhr.onreadystatechange = function(){
+//        if(xhr.readyState === 4){
+//            if(xhr.status === 200){
+//                console.log(JSON.parse(xhr.responseText));
+//            }
+//        }
+//    };
+</script>
+</html>

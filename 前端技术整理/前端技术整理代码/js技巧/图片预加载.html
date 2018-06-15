@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .load::after{
+            position: absolute;
+            display: block;
+            content: '';
+            width: 0;
+            height: 0;
+            background: url("www.baidu.com");
+        }
+    </style>
+</head>
+<body>
+
+</body>
+<script>
+    // https://blog.csdn.net/baidu_24024601/article/details/76167082
+    // https://blog.csdn.net/kongjiea/article/details/24308053
+
+    // 开发的时候，会有当hover的时候变化图片的需求，如果没有预加载，那么会出现闪烁的情况
+    // 第一种使用纯css进行预加载,使用伪元素
+    // 加载了图片但是不在可见范围内，但是这种方法会减慢一开始加载的速度
+
+    // 第二种使用纯js进行预加载
+    // ...三，四种
+</script>
+</html>

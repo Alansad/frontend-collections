@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 没太看懂这个是想干嘛
+//    window.callback_jsonp = function(){
+//        clearTimeout(window.jsonp_timer);
+//        console.log('请求成功');
+//    };
+//    // 3s超时处理，避免服务端出错
+//    window.jsonp_timer = setTimeout(function(){
+//        window.callback_jsonp = function(){
+//            console.log('jsonp请求超时后返回数据');
+//        };
+//        console.log('jsonp请求超时');
+//    },3000);
+//    var new_script = document.createElement('script');
+//    new_script.src = "//localhost/index.php?callback=window.callback_jsonp";
+//    document.body.appendChild(new_script);
+//    console.log('jsonp请求');
+
+    // 另一种
+    // 后端代码
+//    var callback = req.query.callback;
+//    var user = {name: '1', age: 18};
+//    var message = callback + '(' + JSON.stringify(user) + ')';
+//    res.send(message);
+    // 前端jsonp实现
+    function myCallback(data){
+        console.log(data);
+    }
+    function jsonp(url, data, callback){
+        if(typeof data === 'string'){
+            callback = data;
+            data = {};
+        }
+        var hasParams = url.indexOf('?');
+        url += hasParams ? '&' : '?' + "callback=" + callback;
+        var params = '';
+        for(var i in data){
+            params += '&' + i + '=' + data[i];
+        }
+        url += params;
+        var script = document.createElement('script');
+        script.setAttribute('src', url);
+        document.querySelector('head').appendChild(script);
+    }
+    jsonp('http://baidu.com', {name: '1'}, 'myCallback');
+</script>
+</html>

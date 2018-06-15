@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 一、js事件流
+    // 事件流是一个从Window开始，最后回到Window的一个过程
+    // 分为三个阶段，捕获过程，目标过程，冒泡过程
+    // 冒泡型事件，从最具体的事件到最不具体的事件依次触发
+    // 捕获型事件，从最不具体的事件向最具体的事件依次触发
+    // DOM事件流，同时支持捕获型事件和冒泡型事件，但是捕获型事件先发生，两种事件流会触及DOM中的所有对象，从Document开始，会到Document，这里说是Window也可以
+
+    // 二、js事件之事件处理程序
+    // 1:HTML事件处理程序
+    // <input type="button" value="Click Here" onclick="alert('Clicked!');" />
+    // 2:DOM0级事件处理程序
+//    var btn = document.querySelector('.aaa');
+//    btn.onclick = function(){
+//        console.log(this.id);
+//    }
+    // 3:DOM2级事件处理程序
+    // addEventListener和removeEventListener
+
+    // 三、js事件之事件对象
+    // target返回触发此事件的对象(事件的目标节点)
+    // type返回当前event对象表示的事件的名称
+    // preventDefault 阻止默认事件
+    // stopPropagation 阻止冒泡
+    // currentTarget 返回事件监听器触发该事件的元素，不一定是目标元素
+
+    // 事件代理
+    // https://www.cnblogs.com/starof/p/4066381.html
+
+    // 一些常用事件
+</script>
+</html>

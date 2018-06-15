@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+//    Object.defineProperty(obj, "key", {
+//       _proto_: null,  //没有继承的属性
+//       enumerable: false, //enumerable为true的时候属性才能出现在对象的枚举属性中，默认为false
+//       writable: false,   //当writable为true时，该属性才能被赋值运算符改变,默认为false.(configurable不为true其实也不行)
+//       configurable: false,  // configurable为true的时候该属性才能够被改变，也能够被删除，默认为false
+//       value: "static"
+//    });
+//    var o ={};
+//    var bValue;
+//    Object.defineProperty(o, "b", {
+//        get: function(){   //get是给对象的属性赋值，get貌似在set前面执行？
+//            return bValue + 2;
+//        },
+//        set: function(newValue){
+//            bValue = newValue;
+//        },
+//        enumerable: true,
+//        configurable: true
+//    });
+//    o.b = 38;
+//    console.log(o.b);
+//    var o = {};
+//    Object.defineProperty(o, "b", {
+//        value: 37,
+//        writable: false
+//    });
+//    o.b = 25;    //赋值不起作用
+//    console.log(o.b);
+//    var o = {};
+//    Object.defineProperty(o, "a", {
+//        value: 1,
+//        enumerable: true
+//    });
+//    Object.defineProperty(o, "b", {
+//        value: 2,
+//        enumerable: false
+//    });
+//    Object.defineProperty(o, "c", {
+//        value: 3    //enumerable default is false
+//    });
+//    o.d = 4;
+//    for(var i in o){
+//        console.log(i);
+//    }
+//    console.log(Object.keys(o));
+    // Setters 和 Getters
+//    function Archiver(){
+//        var temperature = null;
+//        var archive = [];
+//
+//        Object.defineProperty(this, 'temperature', {
+//            get: function(){
+//                console.log('get!');
+//                return temperature;
+//            },
+//            set: function(value){
+//                temperature = value;
+//                archive.push({val: temperature});
+//            }
+//        });
+//        this.getArchive = function(){
+//            return archive;
+//        }
+//    }
+//    var arc = new Archiver();
+//    arc.temperature = 11;
+//    arc.temperature = 13;
+//    console.log(arc.temperature);   //这里可以获取到属性值是因为调用了get方法，返回了temperature，不然就取不到了
+//    console.log(arc.getArchive);   //这种写法，对象里面的值有默认的get方法，但是数组属性是没有的，不能直接获取到
+
+//    var pattern = {
+//        get: function(){
+//            return 'I alway return this string,whatever you have assigned';
+//        },
+//        set: function(){
+//            this.myname = 'this is my name string';
+//        }
+//    };
+//    function TestDefineSetAndGet(){
+//        Object.defineProperty(this, "myproperty", pattern);
+//    }
+//    var instance = new TestDefineSetAndGet();
+//    instance.myproperty = "test";
+//    console.log(instance.myproperty);
+//    console.log(instance.myname);
+
+    //综上，get指读取属性时调用的函数
+    //set指写入属性时调用的函数
+    var book = {
+        "year": 2004,
+        "edition": 1
+    };
+    Object.defineProperty(book, "year", {
+        get: function(){
+            return this.year;
+        },
+        set: function(newValue){
+            if(newValue > 2004){
+                this.year = newValue;
+                this.edition += newValue - 2004;
+            }
+        }
+    });
+    book.year = 2005;
+    console.log(book.edition);
+</script>
+</html>

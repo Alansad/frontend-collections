@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function* gen(){
+        yield 123+456;
+    }
+    var num = gen();
+    console.log(num.next());   //返回的是一个object，里面包含一个value还有一个done属性
+    // Generator函数还是普通函数
+</script>
+</html>

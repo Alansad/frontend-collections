@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p class="ppp">
+    <div>
+    想啊想
+    <span>xaxa</span>
+    啊啊</div>
+</p>
+</body>
+<script>
+    // text()设置或返回所选元素的文本内容；
+    // html（）设置或返回所选元素的内容（包括html标记）；
+    // val（）设置或返回表单字段的值；
+    // Jquery才有以上三个方法,innerHTML和innerText是原生js的写法
+    // innerHTML/innerText:是原生js中的写法，jquery不支持。
+    // innerHTML是从DOM对象的起始位置到终止位置的全部内容，包括html标签
+    // innerText不包括html标签
+    console.log(document.querySelector('.ppp'));
+    console.log(document.querySelector('.ppp').innerHTML);
+    console.log(document.querySelector('.ppp').innerText);
+</script>
+</html>

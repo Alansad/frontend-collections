@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 对象具有_proto_属性，可称之为隐式原型，一个对象的隐式原型指向构造该对象的构造函数的原型prototype
+    // 因为对象没有构造函数，所以对象只有_proto_属性，没有prototype属性
+    // 方法有prototype属性，这个属性是一个指针，指向一个对象，这个对象包含所有实例所共用的属性和方法,我们把这个对象叫做原型对象
+    // 方法所创建的实例是一个对象，是没有prototype属性的，但是有_proto_属性，这个属性指向构造函数的原型对象
+    // 方法也有_proto_属性，因为方法是由Function生成的，所以方法的_proto_属性指向Function.prototype
+    // 关于原型对象，原型对象也有一个属性，constructor,指向构造函数本身,Function.prototype.constructor指向Function
+    // a.prototype.constructor指向 function a(){}
+    // 原型对象也是一个对象，那么原型对象,a._proto_._proto_又指向哪里呢,会指向构造函数的原型对象
+    // 这些原型的_proto_属性连接起来会形成一个链条，递归访问_proto_属性最终到头，并且值是null,这条链就是原型链
+    // https://www.cnblogs.com/shuiyi/p/5305435.html
+</script>
+</html>

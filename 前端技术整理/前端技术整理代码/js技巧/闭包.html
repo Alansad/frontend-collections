@@ -25,5 +25,18 @@
 ////    c.inc();
 ////    c.inc();
     // js没有块级作用域，只有函数级作用域，函数外面的变量函数里面可以找到，函数里面的变量函数外面找不到
+
+    function Foo() {
+        var i = 0;
+        return function() {
+            console.log(i++);
+        }
+    }
+    var f1 = Foo(),
+        f2 = Foo();
+    // 要注意这里return出来的是一个新的function,局部作用域也是新的
+    f1();
+    f1();
+    f2();
 </script>
 </html>

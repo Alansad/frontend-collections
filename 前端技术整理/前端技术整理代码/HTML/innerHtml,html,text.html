@@ -20,8 +20,15 @@
     // innerHTML/innerText:是原生js中的写法，jquery不支持。
     // innerHTML是从DOM对象的起始位置到终止位置的全部内容，包括html标签
     // innerText不包括html标签
+
+    // textConten和innerText的diffrence
+    // textContent返回的不仅包括style里面的，还包括display：none的元素里面的text
+    // innerText不会返回style和display:none元素的text
+    // https://blog.csdn.net/dexing07/article/details/77947333
     console.log(document.querySelector('.ppp'));
     console.log(document.querySelector('.ppp').innerHTML);
     console.log(document.querySelector('.ppp').innerText);
+
+    // textcontent和innertext
 </script>
 </html>

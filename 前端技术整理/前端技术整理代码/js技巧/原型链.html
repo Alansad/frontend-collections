@@ -18,5 +18,71 @@
     // 原型对象也是一个对象，那么原型对象,a._proto_._proto_又指向哪里呢,会指向构造函数的原型对象
     // 这些原型的_proto_属性连接起来会形成一个链条，递归访问_proto_属性最终到头，并且值是null,这条链就是原型链
     // https://www.cnblogs.com/shuiyi/p/5305435.html
+
+    // 下面利用原型链来实现jquery的链式调用
+//    function Jq(){
+//
+//    }
+//    function $(clas){
+//        return new Jq();
+//    }
+//    Jq.prototype = {
+//        css: function(){
+//            console.log("css");
+//            return this;
+//        },
+//        show: function(){
+//            console.log("show");
+//            return this;
+//        },
+//        hide: function(){
+//            console.log("hide");
+//        }
+//    }
+//    $('aa').css().show().hide();
+//
+//    // 遍历对象自身的属性
+//    for(var o in obj){
+//        if(obj.hasOwnProperty(o)){
+//            console.log(o);
+//        }
+//    }
+    // 低版本浏览器是没有屏蔽prototype上的属性的,所以必须要用hasOwnProperty判断一下是不是这个对象的属性
+
+    // Object.prototype.toString().call(o) === [object Array]
+
+    // Object.prototype.__proto__指向null
+
+    // 原型链继承，prototype都是一个Object
+
+    // new一个对象的过程
+    // 先创建一个对象，执行构造函数之后，再返回这个对象
+
+//    function Elem(id){
+//        this.elem = document.getElementById(id);
+//    }
+//    Elem.prototype = {
+//        html: function(val){
+//            var elem = this.elem;
+//            if(val){
+//                elem.innerHTML = val;
+//                return this;
+//            }else{
+//                return elem.innerHTML;
+//            }
+//        },
+//        on: function(type, fn, is){
+//            var elem = this.elem;
+//            elem.addEventListener(type, fn, is);
+//        },
+//    }
+//    var elem = new Elem('div');
+    arr = [1,2,3];
+    arr.__proto__.addClass = function(){
+        console.log('addClass');
+    };
+    arr1 = [1,2,3,4];
+    console.log(Array.prototype);
+
 </script>
 </html>

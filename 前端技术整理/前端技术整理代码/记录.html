@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            list-style: none;
+            position: relative;
+            width: 1000px;
+            height: 40px;
+        }
+        li{
+            position: absolute;
+            height:40px;
+            width: 40px;
+            line-height: 40px;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            background-color: #5dd94e;
+            transition: left 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li data-left="0" style="left:0">
+        0
+    </li>
+    <li data-left="50" style="left:50px">
+        1
+    </li>
+    <li data-left="100" style="left:100px">
+        2
+    </li>
+    <li data-left="150" style="left:150px">
+        3
+    </li>
+    <li data-left="200" style="left:200px">
+        4
+    </li>
+    <li data-left="250" style="left:250px">
+        5
+    </li>
+</ul>
+</body>
+<script>
+    // https://zhuanlan.zhihu.com/p/38066626  js代码技巧
+    // https://zhuanlan.zhihu.com/p/34474787 学以致用
+    // https://blog.csdn.net/justjavac/article/details/19473199 map经典考题
+
+    // 经典面试题
+    // https://blog.csdn.net/wdlhao/article/details/79079660
+
+    // parseInt是window对象的一个方法
+    // console.log(["1","2","3","2"].map(parseInt));   1 NAN NAN 2
+    // ["1","2',"3"].map(parseInt)为什么会出现 1，NAN, NAN
+    // 因为map传的是3个参数，value，index，arr；但是parseInt接收的两个参数为value，radix;当radix为0或空时以10进制解析
+    // radix小于2或者大于36时会返回NA，所以"2"会返回NA，因为radix为1
+    // "3"返回NAN是因为radix为2，3无法以2进制解析，所以为NAN;
+    // https://blog.csdn.net/justjavac/article/details/19473199
+    // 这种情况以后也要注意
+
+
+    // https://zhuanlan.zhihu.com/p/38296857 MVVM vue
+    // 黑科技自定义多行省略样式
+    // https://www.cnblogs.com/wetest/p/7365676.html
+    // 开源中国
+    // https://www.oschina.net/question/tag/iscroll
+
+
+    // nodejs模版
+
+    var readline = require('readline');
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+        terminal:false
+    });
+
+    rl.on('line', function(line){ // javascript每行数据的回调接口
+        var str = line.split(''),
+            max = 1,
+            count = 1,
+            last = str[0];
+        for(var i=1;i<str.length;i++){
+            if(last != str[i]){
+                count++;
+            }else{
+                count = 1;
+            }
+            last = str[i];
+
+            max = max<count?count:max;
+        }
+        console.log(max);
+    });
+//    console.log(parseInt.__proto__);
+
+    // 招行编程题解
+    // https://www.nowcoder.com/discuss/71125?type=0&order=0&pos=6&page=1
+    window.onload = function(){
+        var uldom = document.querySelector('ul');
+        uldom.onclick = function(ev){
+            var target = ev.target;
+            if(target.nodeName.toLowerCase() === 'li'){
+                alert(target.innerHTML);
+            }
+        }
+    }
+</script>
+</html>

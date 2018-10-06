@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .mainWrapper{
+            width: 100%;
+            float: left;
+        }
+        .sub{
+            width: 200px;
+            height: 400px;
+            float: left;
+            background-color: green;
+            margin-left: -100%;
+        }
+        .extra{
+            width: 400px;
+            height: 200px;
+            float: left;
+            background-color: black;
+            margin-left: -400px;
+        }
+        .main{
+            height: 400px;
+            background-color: red;
+            margin: 0 400px 0 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="mainWrapper">
+    <div class="main"></div>
+</div>
+<div class="sub"></div>
+<div class="extra"></div>
+</body>
+<script>
+    // 与圣杯布局的区别在于圣杯布局是直接对main进行操作，设置padding后main整体缩小了,margin的百分之多少是相对于main的长度来定的
+    // 还要对left和right的块进行相对定位的调整
+
+    // 双飞翼布局则不一样，main的布局有mainWrapper来进行，左右留白右margin来进行
+</script>
+</html>

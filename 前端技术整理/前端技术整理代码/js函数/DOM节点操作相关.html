@@ -5,12 +5,166 @@
     <title>Title</title>
 </head>
 <body>
-
+<div id="insert">
+    <p>
+        <a href=""></a>
+    </p>
+</div>
 </body>
 <script>
     // https://www.cnblogs.com/yyy6/p/6761334.html
+    // https://blog.csdn.net/hj7jay/article/details/53389522
+    // https://blog.csdn.net/z742182637/article/details/51655690
 
     // querySelector() 方法仅仅返回匹配指定选择器的第一个元素,返回的不是一个数组
 
+    // NodeList和HTMLCollection
+    // HTMLCollection是一个特殊的NodeList，它们是实时更新的
+    // Node.childNodes document.getElementsByName获取的是实时的节点
+    // document.querySelectorAll 和 document.querySelector返回的结果是固定的
+
+    // 遍历querySelectorAll
+    // http://www.webhek.com/post/foreach-queryselectorall-nodelist.html
+
+//    var divs = document.querySelectorAll('div');
+//    [].forEach().call(divs, function(div){
+//        div.style.color = 'red';
+//    })
+    // 必须要这么写才行
+    // 或者传统方法遍历
+
+//    for(var i = 0; i < divs.length; i++){
+//        divs[i].style.color = 'red';
+//    }
+    var div = document.createElement('div');
+    div.id = 'test';
+    div.style = "color: red;font-size: 12px";
+    div.innerHTML = '我是新创建的节点';
+    document.body.insertBefore(div,document.querySelector('#insert'));
+    // createTextNode创建文本节点
+    var node = document.createTextNode('我是文本节点');
+//    div.appendChild(node);
+
+    // 复制节点
+    var node_clone = node.cloneNode(true);
+    div.appendChild(node_clone);
+    var insertnode = document.querySelector('#insert');
+    var div_clone = insertnode.cloneNode(true);
+    // cloneNode的参数设置为true，可以克隆子节点
+    // 内联方式绑定的事件可以复制，但是onclick = function或者addEventListner方式绑定的事件不能够被复制
+    document.body.insertBefore(div_clone, insertnode);
+    // replaceChild(要插入的节点， 被替换的节点)
+    document.body.replaceChild(div, div_clone);
+    // appendChild方法是在父节点中的字节点的末尾添加新的节点（相对于父节点来说）。insertBefor方法是在已有的节点前添加新的节点（相对于子节点来说的）
+    // insertBefore可以在子节点列表的任何位置
+    // appendChild是在子节点的末尾
+
+    // 父关系dom操作
+    // parentNode和parentElement
+    // parentNode的父节点可能是Element,Document或DocumentFragment
+    // parentElement的父节点只能是Element，不然就会返回null
+    //console.log(node_clone.parentNode);
+
+    // 子关系dom操作
+    // children返回一个实时的HTMLCollection,子节点都是Element
+    // childNodes返回实时的nodeList，可能包含文本节点，注释等
+    // firstChild  firstElementChild  lastChild lastElementChild
+    // console.log(document.body.children);  // 所以一般用的话用children，拿到的都是Element
+    // console.log(document.body.firstChild);  // 返回的是text
+    //console.log(document.body.firstElementChild);  //用firstElementChild比较好
+
+    // 删除节点
+//    function removeChild(node){
+//        if(!node){
+//            return;
+//        }else{
+//            node.parentNode.removeChild(node);
+//        }
+//    }
+
+    // 兄弟关系dom操作
+    // previousSibling  nextSibling  previousElementSibling  nextElementSibling
+    // console.log(document.querySelector('#insert').nextElementSibling);  //感觉用next/previousElementSibling比较好
+
+    // 元素属性型api
+    // setAttribute getAttribute
+    // setAttribute(name, value)  不存在name的话先创建再赋值
+    // getAttribute(name) 不存在name的话返回null
+    // hasAttribute('v-click') 判断节点有没有这个属性
+    // removeAttribute 移除属性
+
+//    function jq(id){
+//        this.jq = document.querySelector(id);
+//    }
+//    function $(id){
+//        return new jq(id);
+//    }
+//    jq.prototype = {
+//        Attribute: function(name, value){
+//            if(name && value){
+//                this.jq.setAttribute(name. key);
+//                return this;
+//            }else{
+//                console.log(this.jq);
+//                var getkey = this.jq.getAttribute(name);
+//                return getkey;
+//            }
+//        }
+//    };
+//    var stylekey = $('#test').Attribute('style');
+//    // 重写trim函数
+//    String.prototype.trim = function(){
+//        return this.replace(/(^\s*)|(\s*$)/g, "");
+//    }
+
+//    // 将内联的style字符串转化为obj
+//    function translate(string){
+//        var arr = string.split(';');
+//        var obj = {};
+//        arr.forEach(function(value, index, arr){
+//            if(index !== arr.length -1){
+//                var splitarr = value.split(":");
+//                console.log(splitarr);
+//                var name = splitarr[0].trim();
+//                var key =  splitarr[1].trim();
+//                obj[name] = key;
+//            }
+//        })
+//        return obj;
+//    }
+//    console.log(translate(stylekey));
+
+    // https://blog.csdn.net/hj7jay/article/details/53389522
+    // 下次再继续看
+
+
+    // 修改style的样式
+//    div.style.setProperty(name,key);
+//    div.style.getProperty(name);
+
+    // document.createDocumentFragment()  文档碎片化，同时插入大量dom
+    // 或者用字符串来拼接
+    // str += '<li>第'+i+'个子节点</li>';
+    // document.getElementById('ul').innerHTML = str;
+
+    //  添加删除class
+//    div.classList.add('classList','classList2');
+//    div.classList.remove('classList');
+    // getBoundingClientRect()
+//    function callee(){
+//        console.log(arguments.callee.name);
+//    }
+//    callee(1,2,3);
+//    var arr = [];
+//    if(arr){
+//        console.log(true);
+//    }else{
+//        console.log(false);
+//    }
+//    if ([] == false) {console.log(1);};
+//    if ({} == true ) {console.log(2);};
+//    if ([]) {console.log(3);};
+//    if ([1] == [1]) {console.log(4);};
+//    if ('1' == [1]) {console.log(5);};
 </script>
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main{
+            width: 100%;
+            height: 400px;
+            background-color: red;
+            float: left;
+        }
+        .sub{
+            position: relative;
+            left: -200px;
+            width: 200px;
+            height: 400px;
+            background-color: green;
+            float: left;
+            margin-left: -100%;
+        }
+        .extra{
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: black;
+            float: left;
+            margin-left: -400px;
+        }
+        #bd{
+            padding: 0 400px 0 200px;
+        }
+    </style>
+</head>
+<body>
+<div id="bd">
+    <div class="main"></div>
+    <div class="sub"></div>
+    <div class="extra"></div>
+</div>
+</body>
+<script>
+    function a(){
+
+    }
+    console.log(typeof a);
+</script>
+</html>

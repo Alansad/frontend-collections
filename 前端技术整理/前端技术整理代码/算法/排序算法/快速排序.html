@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 首先定义一个函数，然后之后递归调用
+    var arr = [6,2,5,3,4,7,10,4,5];
+    function quicksort(arr, left, right){
+        if(left < right){
+            let center = arr[left];
+            let i = left;
+            let j = right;
+            while(i < j){
+                while(i < j && arr[j] > center){
+                    j--;
+                }
+                if(i < j){
+                    arr[i] = arr[j];
+                    i++;
+                }
+                while(i < j && arr[i] < center){
+                    i++;
+                }
+                if(i < j){
+                    arr[j] = arr[i];
+                    j--;
+                }
+            }
+            arr[i] = center;
+            quicksort(arr, left, i - 1);
+            quicksort(arr, i + 1, right);
+        }
+    }
+    quicksort(arr, 0, arr.length-1);
+    console.log(arr);
+</script>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // https://blog.csdn.net/lee1996jun/article/details/79531960
+    // https://www.cnblogs.com/humin/p/4556820.html
+    // es5和es6继承的区别
+    // https://www.jianshu.com/p/342966fdf816
+    //
+    function Father(){
+
+    }
+    function Son(){
+        Father.call(this);  //继承属性
+    }
+    Son.prototype = new Father;  //继承方法
+    Son.prototype.constructor = Son //修正constructor
+</script>
+</html>

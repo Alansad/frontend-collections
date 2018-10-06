@@ -1,73 +1,159 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>myVue</title>
+    <meta charset="utf-8">
 </head>
+<style>
+    #app {
+        text-align: center;
+    }
+</style>
 <body>
-    <div id="app">
-        <form>
-            <input type="text" v-model="number">
-            <button type="button" v-click="increment"></button>
-        </form>
-        <h3 v-bind="number"></h3>
-    </div>
+<div id="app">
+    <form>
+        <input type="text"  v-model="number">
+        <button type="button" v-click="increment">增加</button>
+    </form>
+    <h3 v-bind="number"></h3>
+</div>
 </body>
+
 <script>
-    // 先定义一个构造函数，定义初始化构造方法_init函数
-    function myVue(options){
+    // https://www.cnblogs.com/kidney/p/8018226.html
+    // https://segmentfault.com/a/1190000014274840
+
+    // 总体思路就是先建一个构造函数myVue
+    // myVue构造函数的原型上添加init函数
+    //  init函数里面包括三个函数以及初始化
+    // 三个函数为this.binding;observer;complie
+    // this.binding里面放的是每个属性的directives的watcher数组，一个watcher的关键是dom和对应的data属性以及update方法
+    // observer会递归地对每个data的每个属性进行defineProperty方法定义set和get方法,set的时候对binding的每个属性的watcher执行update方法
+    // compile对模版进行解析,getAttribute获取属性,然后根据属性的含义进行事件绑定,用method的方法bind绑定this.data
+    // 如果涉及到双向数据绑定，就得对this.binding里的这个属性的directives里添加watcher了
+
+
+    function myVue(options) {
         this._init(options);
     }
-    myVue.prototype._init = function(options){
+
+    myVue.prototype._init = function (options) {
         this.$options = options;
-        this.$el = options.el;
+        this.$el = document.querySelector(options.el);
         this.$data = options.data;
         this.$methods = options.methods;
+        // _binding里装的每个属性的dirctives，是一个watcher的数组
+        this._binding = {};
+        // 监听data的状态.对每个data的属性添加get和set函数，主要是set,里面对_binding[key]也就是每个属性的directives进行遍历
+        // 也就是说执行directives里面的每个watcher的update方法
         this._obverse(this.$data);
-    };
-    // 接下来实现_observer函数对data进行处理，重写data的set和get函数
-    myVue.prototype._observe = function(obj){
+        // complie解析模版，并且向对应属性的directive添加watcher，并且添加事件监听绑定函数
+        this._complie(this.$el);
+    }
+
+    myVue.prototype._obverse = function (obj) {
         var value;
-        // 遍历obj对象
-        for(key in obj){
-            // 如果key仍然是对象的话，要再次调用_observe方法进行遍历
-            if(obj.hasOwnProperty(key)){
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) {
+                this._binding[key] = {
+                    _directives: []
+                };
                 value = obj[key];
-                if(typeof(value) === 'object'){
-                    this._observe(value);
+                if (typeof value === 'object') {
+                    this._obverse(value);
                 }
-                Object.defineProperty(obj, key, {
+                var binding = this._binding[key];
+                Object.defineProperty(this.$data, key, {
                     enumerable: true,
                     configurable: true,
-                    get: function(){
+                    get: function () {
                         console.log(`获取${value}`);
                         return value;
                     },
-                    set: function(newValue){
+                    set: function (newVal) {
                         console.log(`更新${newVal}`);
-                        if(value !== newVal){
+                        if (value !== newVal) {
                             value = newVal;
+                            binding._directives.forEach(function (item) {
+                                item.update();
+                            })
                         }
                     }
                 })
             }
         }
-    };
-    // 接下来就是写一个指令类Watcher,用来绑定dom元素，实现对DOM元素的更新
-    function Watcher(name, el, vm, exp, attr){
-        this.name = name;  //指令名称
-        this.el = el;  //指令对应的DOM元素
-        this.vm = vm;  //指令所属的vue实例
-        this.exp = exp; //指令对应的值
-        this.attr = attr;  //绑定的属性值
+    }
+
+    myVue.prototype._complie = function (root) {
+        var _this = this;
+        var nodes = root.children;
+        for (var i = 0; i < nodes.length; i++) {
+            var node = nodes[i];
+            if (node.children.length) {
+                this._complie(node);
+            }
+
+            if (node.hasAttribute('v-click')) {
+                node.onclick = (function () {
+                    var attrVal = nodes[i].getAttribute('v-click');
+                    return _this.$methods[attrVal].bind(_this.$data);
+                })();
+            }
+
+            if (node.hasAttribute('v-model') && (node.tagName == 'INPUT' || node.tagName == 'TEXTAREA')) {
+                node.addEventListener('input', (function(key) {
+                    var attrVal = node.getAttribute('v-model');
+                    _this._binding[attrVal]._directives.push(new Watcher(
+                        'input',
+                        node,
+                        _this,
+                        attrVal,
+                        'value'
+                    ))
+
+                    return function() {
+                        _this.$data[attrVal] =  nodes[key].value;
+                    }
+                })(i));
+            }
+
+            if (node.hasAttribute('v-bind')) {
+                var attrVal = node.getAttribute('v-bind');
+                _this._binding[attrVal]._directives.push(new Watcher(
+                    'text',
+                    node,
+                    _this,
+                    attrVal,
+                    'innerHTML'
+                ))
+            }
+        }
+    }
+
+    function Watcher(name, el, vm, exp, attr) {
+        this.name = name;         //指令名称，例如文本节点，该值设为"text"
+        this.el = el;             //指令对应的DOM元素
+        this.vm = vm;             //指令所属myVue实例
+        this.exp = exp;           //指令对应的值，本例如"number"
+        this.attr = attr;         //绑定的属性值，本例为"innerHTML"
+
         this.update();
     }
-    Watcher.prototype.update = function(){
+
+    Watcher.prototype.update = function () {
         this.el[this.attr] = this.vm.$data[this.exp];
-    };
+    }
 
-    myVue.prototype._complie = function(root){
-
+    window.onload = function() {
+        var app = new myVue({
+            el:'#app',
+            data: {
+                number: 0
+            },
+            methods: {
+                increment: function() {
+                    this.number ++;
+                },
+            }
+        })
     }
 </script>
-</html>

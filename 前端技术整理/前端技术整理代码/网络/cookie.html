@@ -10,6 +10,7 @@
 <script>
     // https://www.nowcoder.com/test/question/done?tid=16209873&qid=163605#summary
     // https://www.cnblogs.com/andy-zhou/p/5360107.html
+    // https://www.cnblogs.com/shizhouyu/p/3963122.html
     // cookie的机制
     // cookie可以弥补http协议无状态的不足,session出现之前，基本上所有的网站都采用cookie来跟踪会话
     // 浏览器会将cookie放在磁盘上的某个位置,再次请求服务器的时候放在http请求头里面
@@ -53,5 +54,16 @@
     // session仍然需要cookie来支持，http是无状态协议，无法依据http来判断是否是同一用户
     // 所以服务端会向浏览器发送一个名为JSESSIONID的cookie，它的值为该session的id，session依据这个cookie来判断是否为同一用户
     // cookie不是很安全，别人可以分析存放在本地的cookie并且进行cookie欺骗，用session更安全一些
+
+    // 理解cookie
+    // https://www.cnblogs.com/andy-zhou/p/5360107.html
+
+    // 操作cookie
+    // https://www.cnblogs.com/shizhouyu/p/3963122.html
+
+    // http报文里哪些字段是与cookie有关的
+    // https://www.cnblogs.com/QxQstar/p/8504143.html
+
+    document.cookie = "judge=yes";
 </script>
 </html>

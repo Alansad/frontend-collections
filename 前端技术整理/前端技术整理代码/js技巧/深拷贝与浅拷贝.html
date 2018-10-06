@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // https://blog.csdn.net/u014628388/article/details/77489400
+    // 浅拷贝只是拷贝了地址  深拷贝是重新分配了一块儿内存空间
+
+    // 下面来看一个浅拷贝实例
+    var obj = {
+        a: 1,
+        arr: [1,2]
+    };
+    function shallowCopy(){
+        var newobj = {};
+        for(var index in obj){
+            newobj[index] = obj[index];
+        }
+        return newobj;
+    }
+    var newCopy = shallowCopy(obj);
+    newCopy.arr[0] = 5;
+    console.log(obj.arr[0]);
+    // 数组是引用变量，arr只是保存了地址，把地址赋给了newCopy的arr,所以修改newCopy.arr也会修改obj.arr
+
+    // 下面来写深拷贝的函数
+    function deepClone(obj){
+        let objClone = Array.isArray(obj)?[]:{};
+        if(obj && typeof obj==="object"){
+            for(key in obj){
+                if(obj.hasOwnProperty(key)){
+                    //判断ojb子元素是否为对象，如果是，递归复制
+                    if(obj[key]&&typeof obj[key] ==="object"){
+                        objClone[key] = deepClone(obj[key]);
+                    }else{
+                        //如果不是，简单复制
+                        objClone[key] = obj[key];
+                    }
+                }
+            }
+        }
+        return objClone;
+    }
+    let a=[1,2,3,4];
+    var oldfunc = function (){
+        console.log('我是旧函数');
+    };
+    var newfunc = function (){
+        console.log("我是新函数");
+    };
+    function deepclone(a){
+        var newobj = JSON.stringify(a);
+        newobj = JSON.parse(newobj);
+        return newobj
+    }
+    b = deepClone(a);
+    a[0] = 2;
+    console.log(a,b);
+
+    // 函数可以直接深拷贝，因为每次都是一个新的function
+    // https://blog.csdn.net/u014628388/article/details/77489400
+    // https://www.cnblogs.com/echolun/p/7889848.html
+</script>
+</html>

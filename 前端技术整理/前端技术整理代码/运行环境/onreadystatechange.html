@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // https://blog.csdn.net/u011042133/article/details/52842473
+    // https://www.cnblogs.com/mgqworks/p/7723589.html
+    // https://www.jb51.net/article/139481.htm
+    // // http://www.cnblogs.com/susufufu/archive/2016/08/12/5764431.html
+
+   function LoadJs(url ,callback){
+       var script = document.createElement('script');
+       script.src = "text/javascript";
+       var head = document.getElementBytagName('head')[0];
+       if(typeof (callback) != undefined){
+            // 如果是ie
+           if(script.readyState){
+               script.onreadystatechange = function(){
+                   if(script.readyState === "loaded" || script.readyState === "complete"){
+                       script.onreadystatechange = null;
+                       callback();
+                   }
+               }
+           }else{
+               // 如果是普通的
+            script.onload = function(){
+
+            }
+           }
+           script.onerror = function(){
+
+           }
+       }
+       head.insertBefore(script, head.firstChild);
+   }
+</script>
+</html>

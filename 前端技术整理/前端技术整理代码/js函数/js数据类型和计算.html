@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // https://www.jb51.net/article/77948.htm
+    // typeof instanceof 以及判断类型
+    // js里面基本数据类型有六大类(不算es6)
+    // number,boolean,string,object,undefined,function
+    // sobunf
+    // js里面的数据类型分为值类型和引用类型
+    // 值类型包括string,number,boolean,undefined,null
+    // 引用类型typeof出来都为object，分为对象Object,Array,Function
+    // typeof可以判断除Object类型之外的基础数据类型,但不能区分object的具体类型,如Date,Array等
+    // instanceof本意是用来判断A是否为B的实例对象
+    // 当A的_proto_指向B的prototype的时候，instanceof就返回true
+    // Array和object实例的_proto_都最后都指向Object.prototype
+    // 所以instanceof并不能准确判断实例的object的具体类型
+
+    // typeof出来的有 number,string,boolean,function,object,undefined
+
+    function test(){
+
+    }
+    var a = new test();
+    var b = Object.assign({},a); // 这种情况会返回false
+    console.log(a instanceof test);
+    console.log(b instanceof test);  //false 只要不是test生成的实例，都是false
+//    console.log(a instanceof b);  //后面的参数不能是实例
+    console.log(typeof(window));
+
+    // instancecof 用法
+    // https://www.cnblogs.com/SourceKing/p/5766210.html
+
+    // 模拟一个instanceof
+
+    function _instanceof(A, B){
+        var O = B.prototype;
+        A = A.__proto__;
+        while(true){
+            // Object.prototype.__proto__ === null
+            if(A === null)
+                return false;
+            if(A === O)
+                return true;
+            A = A.__proto__;
+        }
+    }
+
+    // 类型转换
+    // 字符串拼接
+    // ==
+    // (100 == '100') true
+    // (0 == '') true  0和空字符串都可以转换为false
+    // (null == 'undefined') true  null和undefined都可以转换为false
+    console.log(null == '');  //这里是false
+    // if语句
+    // 逻辑运算
+    // (10 && 0)  与操作 0
+    // ('' || 'abc') 或操作 abc
+    // (!window.abc) 转换为boolean  true
+
+
+    // String  new String 和 直接赋值
+    var str = "123";
+    var str1 = new String("123");
+    var str2 = String("123");
+
+    console.log(typeof str);
+    console.log(typeof str1);
+    console.log(typeof str2);
+    console.log(str1);
+    console.log(typeof null);
+    // ""和new String变量存储的区域不同
+    // https://blog.csdn.net/duansale/article/details/74951091
+
+    // new String创建会有问题，容易被攻击
+    // 比如 var a = x; function String(){a = x;}  加入这么一段代码，采用new String方法生成的string a会变成x
+    // 所以很容易被加入攻击代码
+
+    //何时用===何时用==
+
+    if([]){
+        console.log(true);
+    }
+    //  这里是会返回true的,要先判断是否是数组，再判断数组是否为空
+</script>
+</html>

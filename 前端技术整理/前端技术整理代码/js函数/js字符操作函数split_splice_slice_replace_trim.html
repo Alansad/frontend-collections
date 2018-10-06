@@ -9,5 +9,30 @@
 </body>
 <script>
     // https://blog.csdn.net/wdlhao/article/details/79079660
+    // https://blog.csdn.net/xiaoqingpang/article/details/79108005
+    var arr = [1, 2, 3, 4, 5];
+    arr.slice(1);
+    console.log(arr);  //slice返回的是一个新数组
+    console.log(arr.slice(2,3));  // 从序号为2开始，不包含3
+    console.log(arr.slice(-3,-1));
+
+    // splice对原数组进行删除或添加操作，返回的是被删除的元素组成的数组
+    // 第一个参数是index，第二个参数是删除的个数
+    console.log(arr.splice(2,1));
+    console.log(arr);
+
+    // slice是截取，splice是删除，slice是index到index，splice是index到number，slice返回的是新数组，splice返回的是被删除元素组成的数组
+    // splice(index, 0 ,key1, key2) splice也可以用来在指定index位置添加key1，key2等多个元素
+    // push和pop从尾部增减，unshift和shift从头部增减
+
+    // slice和splice都是对数组的操作
+    // 对字符串的操作要用substr和substring
+
+    // https://www.cnblogs.com/ranyonsue/p/6376701.html
+    // str.substr(start, length);
+    // str.substring(start, end);
+
+    // replace方法要配合正则表达式才能全文匹配
+    str.replace(new RegExp(key, 'g'), 'a');
 </script>
 </html>

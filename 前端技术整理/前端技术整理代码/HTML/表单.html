@@ -5,9 +5,45 @@
     <title>Title</title>
 </head>
 <body>
+<script type="text/javascript">
+    //页面刷新之后就会执行弹出框，则证明表单已经提交
+    alert("页面已经刷新证明表单提交成功");
 
+    function buttonsubmit(){
+        document.getElementById('myform').submit()
+        //下面为用jquery方法提交，不过需要引入js文件
+        //$('#myform').submit();
+    }
+</script>
+<form method="post" id="myform" name="myform1" >
+    <div><input type="text" name="a" value="1" id="a" /></div>
+    <div><input type="text" name="b" value="2" id="b" /></div>
+    <div><input type="hidden" name="c" value="3" id="c" /></div>
+
+    <div>
+        <!--下面按钮是通过submit提交实现-->
+        <input type="submit" name="g" value="Submit提交" id="g" />
+        <!--下面按钮是通过按钮调用js方法实现-->
+        <input type="button" name="h" value="button提交" id="h" onclick="buttonsubmit()" />
+    </div>
+</form>
 </body>
 <script>
     // defaultValue 设置或返回文本框的初始内容
+    // https://blog.csdn.net/makang456/article/details/52334003
+    // 表单与表格混合
+    // https://www.jb51.net/article/125773.htm
+
+    // onclick和onsubmit的顺序
+    // https://www.cnblogs.com/ahudyan-forever/p/5795463.html
+
+    // label标签的作用
+    // https://blog.csdn.net/x_d123/article/details/51917754
+    // 点击label时焦点会转移到相关控件上，label的for对应相关表单控件的id
+    // 如果用label把input或者checkbox整个包起来
+    // 如果不使用label，则用户对某内容进行勾选时，必须要用鼠标点到勾选框内才能进行选择，有时会比较麻烦，对用户不友好；使用label则可以让整条内容连同前面的勾选框一起作为一个大的勾选框，用户只需要点击文字，就可以勾选内容，方便用户使用
+
+    // 美化表单
+    // http://www.w3cplus.com/css/custome-design-checkbox-and-radio-width-jquery
 </script>
 </html>

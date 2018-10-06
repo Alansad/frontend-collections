@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // 首先我们来看看mvc模式
+    // 包含1：实体层的Model，2：视图层的View，3：以及控制层的MVC 如上MVC把软件分成了三个层次,理论上来说还是用的层次风格的软件体系结构
+    // View层就是用户的ui界面，用来向用户展示信息以及接收用户的输入
+    // Model层用来保存数据实例
+    // Controller控制器用于更新ui界面和数据实例
+
+    // 什么是MVP模式，MVP模式的P其实是Presenter，代理者，顾名思义，MVP里面的view是不能直接更新Model的，必须通过Presenter
+    // 这么做有什么好处，View层里面的逻辑层被单独抽离出来了，View层里有一些生命周期的代码，里面可能会有大量的逻辑处理
+    // MVP里面的V难道是完全没有逻辑处理了，把逻辑处理放入了Presenter.那么具体又是怎么设计的呢？
+    // 是不是该了解一下activity和fragment，才能更好的理解
+    // https://www.cnblogs.com/changyiqiang/p/6044618.html 接触一下安卓的mvp设计模式
+
+    // 什么是MVVM模式，来了解一下
+    // View Model ViewModel  当任何外部事件发生时，永远只操作ViewModel中的数据
+    // 随着ViewModel的变化，view会自动变化，那么view变化后viewModel会变化吗？
+    // 在vue里面是双向数据绑定，view变化后viewModel也会随之变化
+    // viewModel是针对整个view层的model对象，是若干个model对象的集合
+    // viewModel里面写有业务逻辑，是需要把view和viewModel层联系起来的
+    // viewModel层可以操作model层，model层也可以反馈来更新viewModel层
+    // model层一般用于请求数据，获得从数据库取得的数据
+
+    //  本质上这些模式都是层次风格的，但是根据不同的场景，用不同的模式
+    // 逻辑视图(功能)，开发视图(软件组织)，进程视图(性能)，物理视图，场景
+
+    // https://blog.csdn.net/xijiaohuangcao/article/details/7925641
+</script>
+</html>

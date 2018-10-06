@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // https://blog.csdn.net/x_jagger/article/details/73430959
+    // https://www.jb51.net/article/102027.htm
+    // valueOf 返回最适合对象类型的原始值
+    // toString 将对象的原始值以字符串形式返回
+    var func = function(m, n) {
+        arguments[0] = 3;
+        arguments[1] = 2;
+        return m + n;
+    }
+    console.log(func(1, 1));
+</script>
+</html>

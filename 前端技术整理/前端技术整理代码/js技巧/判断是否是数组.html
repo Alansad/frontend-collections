@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function isArray(o){
+        return Object.prototype.toString.call(o)==='[object Array]';
+    }
+    var arr = [1,3];
+    var obj = {};
+    console.log(isArray(arr));
+    console.log(Object.prototype.toString.call(isArray));
+
+    // 判断引用类型变量
+    // Object.prototype.toString().call(xxx)
+    // [object Object]  [object Array]   [object Function]
+
+    // Array.isArray方法可以判断是否是数组
+    console.log(Array.isArray(arr));
+</script>
+</html>

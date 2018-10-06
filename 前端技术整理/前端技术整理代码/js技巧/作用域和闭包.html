@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // https://www.cnblogs.com/Eric1997/p/7499819.html
+    // 一定要用var关键字，不然定义的就是一个全局变量
+    function fn(){
+        console.log(this);
+        console.log(arguments);
+    }
+    fn(1,2,3,4);
+    // 要注意执行fn的时候，在快要执行的时候，this和arguments就已经出现了
+    // this指的是在快要执行之前才知道this到底指向谁
+
+    // this要在执行时才能确定
+    // call和apply基本一样，只是apply后面的参数全部变为一个数组来传递
+    // var fn2 = function(){}.bind({x:100})
+    // bind一般这么用，后面的参数也是一个一个分开写的
+    // 注意这里如果console.log(this)返回的是Object {x:100}
+
+    for(var i = 0; i < 10; i++){
+        (function(i){
+            var dom = document.createElement('a');
+            dom.innerHTML = i + '<br>';
+            dom.addEventListener('click', function(){
+                e.preventDefault();
+                console.log(i);
+            },false)
+        })(i)
+    }
+
+    function isFirstLoad(){
+        var list = [];
+        return function(i){
+            if(list.indexOf(i) !== -1){
+                return false;
+            }else{
+                list.push(i);
+                return true;
+            }
+        }
+    }
+    isFirstLoad(10); //true
+    isFirstLoad(10); //false
+    isFirstLoad(20); //true
+    // 因为这里返回的函数作用域是在isFirstLoad里面的，list在这个作用域里面一直存在
+    // 这里就做到了一个保密工作，无法直接修改list，只能通过返回的函数来修改list，因为函数是这个作用域里面的
+</script>
+</html>

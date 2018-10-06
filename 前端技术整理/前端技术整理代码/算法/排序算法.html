@@ -7,4 +7,14 @@
 <body>
 
 </body>
+<script>
+    // https://www.cnblogs.com/onepixel/articles/7674659.html
+    for(var i = 0; i < 5; i++){
+        (function(i){
+            setTimeout(function(){
+                console.log(i);
+            },i*1000);
+        })(i);
+    }
+</script>
 </html>

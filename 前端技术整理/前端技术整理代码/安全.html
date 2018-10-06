@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    // https://blog.csdn.net/ganyingxie123456/article/details/70230486
+    // https://segmentfault.com/a/1190000007059639
+    function add(m){
+        return function b(n){
+            return n+m++
+        }
+    }
+    var add1 = add(070);
+    var add2 = add(050);
+    console.log(add1(010));
+    console.log(add2(010));
+</script>
+</html>

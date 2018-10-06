@@ -81,10 +81,60 @@
 //    };
 //    console.log(obj.objAge);  // this指向window
 //    obj.myFun();   // this指向obj
-    var fav = '盲僧';
-    function shows(){
-        console.log(this.fav);
+//    var fav = '盲僧';
+//    function shows(){
+//        console.log(this.fav);
+//    }
+//    shows();  // this指向window
+
+    // 之前的作废，看看阮老师对this的解释
+    // https://mp.weixin.qq.com/s/cNWXVisYTxNMM7-FdwtzyQ
+//    var obj = {
+//        foo: function(){console.log(this.bar);},
+//        bar: 1
+//    };
+//    var foo = obj.foo;
+//    var bar = 2;
+//    // 写法一
+//    obj.foo(); // 1
+//    // 写法二
+//    foo(); // 2
+//    // 写法一的this指向的应该是obj，写法二的this指向的应该是window
+
+    //  下面来探究一下为什么会这样
+    // 1:javascript内存的数据结构
+    // js之所以有this的设计，跟内存里面的数据结构有关系
+    var obj = {
+        foo: 5
     }
-    shows();  // this指向window
+    console.log(obj.foo.value);
+    // 上面的代码将一个对象赋给obj变量，javascript引擎会先在内存里面生成一个对象{foo:5}
+    // 然后将这个对象的内存地址赋给obj变量
+    // 也就是说obj是一个内存地址，后面js要读取obj.foo要先获取obj的内存地址，然后从内存中找到原始的对象，返回它的foo属性
+    // 原始的对象以下面这种形式保存
+//    {
+//        foo:{
+//                [[value]]: 5,
+//                [[writable]]:true,
+//                [enumerable]:true,
+//                [configurable]:true
+//        }
+//    }
+    // 每一个属性名都对应一个属性描述对象
+    // 虽然这样的结构是很清晰，但是问题在于属性的值可能是一个函数
+    var obj = {foo:function(){}}
+    // 这时，引擎会将函数单独保存在内存空间里，然后将内存空间的地址赋给foo属性的描述赋value
+    // 这是因为函数被保存在单独的内存空间里面，所以函数才可以在不同的上下文环境单独执行
+    var f = function(){};
+    var obj = {f:f};
+    // 单独执行
+    f();
+    // obj环境执行
+    obj.f();
+
+    // 4：环境变量
+    // js允许在函数体内部，引用当前环境的其他变量
+    // 那么问题来了，函数体里面使用的变量到底是哪个环境的变量呢
+    // 所以this就出现了，它的设计目的就是在函数内部，指代函数当前的运行环境
 </script>
 </html>

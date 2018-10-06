@@ -32,25 +32,46 @@
 //    var message = callback + '(' + JSON.stringify(user) + ')';
 //    res.send(message);
     // 前端jsonp实现
-    function myCallback(data){
-        console.log(data);
-    }
-    function jsonp(url, data, callback){
-        if(typeof data === 'string'){
-            callback = data;
-            data = {};
-        }
-        var hasParams = url.indexOf('?');
-        url += hasParams ? '&' : '?' + "callback=" + callback;
-        var params = '';
-        for(var i in data){
-            params += '&' + i + '=' + data[i];
-        }
-        url += params;
-        var script = document.createElement('script');
-        script.setAttribute('src', url);
-        document.querySelector('head').appendChild(script);
-    }
-    jsonp('http://baidu.com', {name: '1'}, 'myCallback');
+//    function myCallback(data){
+//        console.log(data);
+//    }
+//    function jsonp(url, data, callback){
+//        if(typeof data === 'string'){
+//            callback = data;
+//            data = {};
+//        }
+//        var hasParams = url.indexOf('?');
+//        url += hasParams ? '&' : '?' + "callback=" + callback;
+//        var params = '';
+//        for(var i in data){
+//            params += '&' + i + '=' + data[i];
+//        }
+//        url += params;
+//        var script = document.createElement('script');
+//        script.setAttribute('src', url);
+//        document.querySelector('head').appendChild(script);
+//    }
+//    jsonp('http://baidu.com', {name: '1'}, 'myCallback');
+      // 先定义一个callback函数
+      function myCallback(data){
+          console.log(data);
+      }
+      function jsonp(url, data, callback){
+          if(typeof data === 'string'){
+              callback = data;
+              data = {};
+          }
+          var hasparams = data.indexOf('?');
+          url = url + hasparams? '&': '?' + "callback=" + callback;
+          var param = '';
+          for(var i in data){
+              param += '&' + i + '=' + data[i];
+          }
+          url += param;
+          var script = document.createElement('script');
+          script.src = url;
+          document.getElementsByTagName('head')[0].appendChild(script);
+      }
+
 </script>
 </html>

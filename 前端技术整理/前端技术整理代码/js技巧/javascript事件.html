@@ -37,5 +37,39 @@
     // https://www.cnblogs.com/starof/p/4066381.html
 
     // 一些常用事件
+
+    // onfocus 获得焦点事件
+    // onblur 失去焦点事件
+    // <input type="text" name="name" value="" size="30" onblur="chkvalue(this)">
+
+    // e.target和e.currentTarget的区别
+    // https://blog.csdn.net/zhanglir333/article/details/78711660
+    // target是目标元素，currentTarget是当前元素
+
+    // js事件流，事件，this，target，currentTarget
+    // currentTarget与this等价
+    // https://www.cnblogs.com/54td/p/5936816.html
+
+    // window对象和document对象
+    // https://blog.csdn.net/zhouziyu2011/article/details/61922889
+    // window代表浏览器中打开的一个窗口，包括navigator,history,location,event,document等对象
+    // document代表整个html文档，可以访问整个页面中的所有元素
+
+    //focus()获得焦点，blur()失去焦点
+    function deepclone(obj){
+        var newobj = Array.isArray(obj) ? [] : {};
+        if(obj && typeof obj === 'object'){
+            for(var index in obj){
+                if(obj.hasOwnProperty(index)){
+                    if(obj[index] && typeof obj[index] === 'object'){
+                        newobj[index] = deepclone(obj[index]);
+                    }else{
+                        newobj[index] = obj[index];
+                    }
+                }
+            }
+        }
+        return newobj;
+    }
 </script>
 </html>

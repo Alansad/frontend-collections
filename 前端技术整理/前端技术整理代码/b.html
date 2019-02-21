@@ -9,48 +9,104 @@
 
 </body>
 <script>
-    // 第一年
-   var money = 11000;
-   sum = money*9 - 7000*6;
+   //  // 第一年
+   // var num = 20 * 1.04;
+   // var base = 1.26 + 0.4;
+   // var firstyear = base * 12 + 1.7 * 3 * 0.73;
+   // firstyear = firstyear - 0.5 * 12;
+   // console.log('第一年:' + firstyear);
+   // // 第二年
+   // num = (num + firstyear) * 1.04;
+   // var twobase = 1.47 + 0.48;
+   // var twoyear = twobase * 12 + 2 * 3 * 0.73;
+   // twoyear = twoyear - 0.5 * 12;
+   // console.log('第二年:' + twoyear);
+   // // 第3,4年
+   // num = (num + twoyear)*1.04;
+   // var thirdbase = 1.7 + 0.56;
+   // var thirdyear = thirdbase * 12 + 2.3 * 3 * 0.73;
+   // thirdyear = thirdyear - 0.5 * 12;
+   // console.log('第三年:' + thirdyear);
+   // // 第5,6年
+   // num = (num + thirdyear)*1.04;
+   // num = (num + thirdyear)*1.04;
+   // var fourbase = 1.95 + 0.61;
+   // var fouryear = fourbase * 12 + 2.7 * 3 * 0.73;
+   // fouryear = fouryear - 0.5 * 12;
+   // console.log('第四年:' + fouryear);
+   // // 第7,8,9,10年
+   // num = (num + fouryear) * 1.04;
+   //  console.log('5年总:' + num);
+   // num = (num + fouryear) * 1.04;
+   // var sevenbase = 2.18 + 0.61;
+   // var sevenyear = sevenbase * 12 + 3 * 3 * 0.73;
+   // sevenyear = sevenyear - 0.5 * 12;
+   // console.log('第五年:' + sevenyear);
+   //  num = (num + sevenyear) * 1.04;
+   //  console.log('7年总:' + num);
+   //  num = (num + sevenyear) * 1.04;
+   //  num = (num + sevenyear) * 1.04;
+   //  num = (num + sevenyear) * 1.04;
+   // console.log('总钱数:' + num);
+   //
+   // var koudaikuan = sevenyear - 1.4 * 12 + 0.25 * 12;
+   // console.log('扣房贷后现金:' + koudaikuan);
+   //获取最近7天日期
 
-   // 第二年
-   sum = sum + 13000*16 - 7000*12;
+   console.log(getDay(0))//当天日期
 
-   // 第三年
-   sum = sum + 15000*16 - 7000*12;
+   console.log(getDay(-30))//7天前日期
 
-   // 第四年
-   sum = sum + 17000*16 - 7000*12;
 
-   // 第五年
-   sum = sum + 19000*16 - 7000*12;
 
-   // 第六,七年
-   sum = sum + (22000*16 - 7000*12)*2;
+   //获取最近3天日期
 
-   //第八,九年
-   sum = sum + (25000*16 - 7000*12)*2;
-   console.log(sum);
-   // 第十，十一，十二年
-   sum = sum + (28000*16 - 7000*12)*3;
-   console.log(sum);
-   // 第十三，十四年
-   sum = sum + (31000*16 - 7000*12)*2;
+   getDay(0);//当天日期
 
-   // 第十四，十五年
-   sum = sum + (33000*16 - 7000*12)*2;
+   getDay(-3);//3天前日期
 
-   // 第十六，十七年,十八年
-   sum = sum + (36000*16 - 7000*12)*3;
-   console.log(sum);
-   // 40到45岁
-   sum = sum + (40000*16 - 7000*12)*5;
 
-   // 45到50岁
-   sum = sum + (44000*16 - 7000*12)*5;
 
-   // 算上公积金
-   sum = sum + 6000*(6+12*27);
-   console.log(sum);
+   function getDay(day){
+
+     var today = new Date();
+
+
+
+     var targetday_milliseconds=today.getTime() + 1000*60*60*24*day;
+
+
+
+     today.setTime(targetday_milliseconds); //注意，这行是关键代码
+
+
+
+     var tYear = today.getFullYear();
+
+     var tMonth = today.getMonth();
+
+     var tDate = today.getDate();
+
+     tMonth = doHandleMonth(tMonth + 1);
+
+     tDate = doHandleMonth(tDate);
+
+     return tYear+"-"+tMonth+"-"+tDate;
+
+   }
+
+   function doHandleMonth(month){
+
+     var m = month;
+
+     if(month.toString().length == 1){
+
+       m = "0" + month;
+
+     }
+
+     return m;
+
+   }
 </script>
 </html>

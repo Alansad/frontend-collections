@@ -9,10 +9,17 @@
 </body>
 <script>
     var i = 0;
-    setTimeout(function(){
+    setInterval(function(){
         console.log(i++);
-        setTimeout(arguments.callee, 2000);
+        console.log(arguments.callee)
+        // if(i === 7){
+        //     clearInterval(arguments.callee)
+        // }
     },2000);
+    // setTimeout(function(){
+    //     console.log(i++);
+    //     setTimeout(arguments.callee, 2000);
+    // },2000);
     // setInterval()是不能用arguments.callee来clearInterval的
     // 原因在于clearInterval是取消的setInterval的实例,不是setInterval的函数
 

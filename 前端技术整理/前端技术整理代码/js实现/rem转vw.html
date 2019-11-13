@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  const template = '.component-agent-hw-m-5 .agent-name {\n' +
+    '  font-size: 1rem;\n' +
+    '  line-height: 1rem;\n' +
+    '  color: #222;\n' +
+    '  position: relative;\n' +
+    '  font-family: PingFangSC-Semibold, Helvetica, "Hiragino Sans GB", "Microsoft Yahei", "微软雅黑", Arial, sans-serif;\n' +
+    '  margin-bottom: 0.4375rem;\n' +
+    '}\n' +
+    '.component-agent-hw-m-5 .agent-name .ke-agent-sj-name {\n' +
+    '  max-width: 38vw;\n' +
+    '  overflow-x: hidden;\n' +
+    '  text-overflow: ellipsis;\n' +
+    '  white-space: nowrap;\n' +
+    '  display: inline-block;\n' +
+    '  line-height: 1.2;\n' +
+    '  margin-top: -0.125rem;\n' +
+    '}'
+
+  // 需要转换的属性
+  const attributeList = [
+    "height",
+    "width",
+    "line-height"
+  ]
+
+  // rem转vw的函数
+  function remToVw(_s,exchangeList){
+    let length = (exchangeList && exchangeList.length >0) ? exchangeList.length : 0;
+    let result = _s
+    for(let i = 0; i < length; i++){
+      result = exchange(result,exchangeList[i])
+    }
+    return result
+  }
+
+  // 将某个属性的rem转为vw
+  function exchange(_s,attribute){
+    let reg = new RegExp(attribute+"(\\:|: )+(\\d)+(rem)","gi") //匹配带rem单位的属性值
+    let regOne = new RegExp(attribute+"(\\:|: )")
+    let regTwo = new RegExp("rem","i")
+
+    let newStr= _s.replace(reg, function(_x){
+      _x = _x.replace(regOne,'').replace(regTwo,'');
+      console.log(_x)
+      return attribute + ":" + parseFloat(_x) * 16 * 100 / 375 + 'vw'; //计算vw的值
+    });
+    return newStr;
+  }
+  console.log(remToVw(template,attributeList))
+
+  // function pxToRem(_s,exchangeList){
+  //   exchangeList.forEach((item) => {
+  //     let reg = /height(\:|: )+(\d)+(rem)/gi;
+  //     let newStr= _s.replace(reg, function(_x){
+  //       console.log(_x)
+  //       _x = _x.replace(/height(\:|: )/,'').replace(/rem/i,'');
+  //       return 'height:' + parseFloat(_x) * 16 * 100 / 375 + 'vw';
+  //     });
+  //     return newStr;
+  //   })
+  // }
+  // console.log(pxToRem('<div style="font-size:20rem;width: 300rem;height: 100rem;"></div>'))
+
+  // exchangeList.forEach((item) => {
+  //   let reg = new RegExp("height(\\:|: )+(\\d)+(rem)","gi")
+  //   let newStr= _s.replace(reg, function(_x){
+  //     console.log(_x)
+  //     _x = _x.replace(/height(\:|: )/,'').replace(/rem/i,'');
+  //     return 'height:' + parseFloat(_x) * 16 * 100 / 375 + 'vw';
+  //   });
+  //   return newStr;
+  // })
+</script>
+</body>
+</html>

@@ -5,28 +5,185 @@
     <title>Title</title>
 </head>
 <body>
-    <span>
-        <div>
+<!--<tbody>-->
 
-        </div>
-    </span>
-    <div>
-        <p>
+<!--</tbody>-->
+<!--<textarea name="" id="" cols="30" rows="10">-->
+    <!--<div></div>-->
+<!--</textarea>-->
+    <!--<p>-->
+        <!--<div>-->
 
-        </p>
-    </div>
-    <span>
-        <p>
+    <!--</div>-->
+    <!--</p>-->
+    <!--<p>测试文字-->
 
-        </p>
-    </span>
-    <p>
-        <div>
+    <!--<ul>-->
 
-    </div>
-    </p>
+        <!--<li>现阶段是不能这样用的，要等到XHTML 2.0才可以这样用。</li>-->
+
+    <!--</ul>-->
+    <!--</p>-->
+    <!--<ul>-->
+        <!--<div>acz</div>-->
+    <!--</ul>-->
+    <!--<textarea name="" id="" cols="30" rows="10"><div>adada</div></textarea>-->
+
+<!--<p>-->
+    <!--<ul>-->
+        <!--adaf-->
+    <!--</ul>-->
+<!--</p>-->
+
+    <!--A<table><tr> B</tr> </em>C</table>-->
+
+    <!--<a href="">-->
+        <!--<a href="">ada</a>-->
+    <!--</a>-->
+
+<!--<body>-->
+<!--<caption></caption>-->
+<!--</body>-->
+<!--A<script>-->
+    <!--var text = document.createTextNode('B');-->
+    <!--document.body.appendChild(text);-->
+<!--</script>C-->
+
+<!--A<script>-->
+    <!--var text = document.getElementsByTagName('script')[0].firstChild;-->
+    <!--text.data = 'B';-->
+    <!--document.body.appendChild(text);-->
+<!--</script>C-->
+
+<!--<a href="#"> <h2>这样是错误的用法！</h2></a>-->
+
+<!--<p>测试文字-->
+
+<!--<p>-->
+
+    <!--<li>现阶段是不能这样用的，要等到XHTML 2.0才可以这样用。</li>-->
+
+<!--</p>-->
+
+<!--测试文字-->
+
+<!--</p>-->
+
+<!--<ol class=adada>-->
+    <!--asdada-->
+<!--</ol>-->
+<!--<ol>-->
+    <!--<li>adcac</li>-->
+    <!--<div>aca</div>-->
+<!--</ol>-->
+
+<!--<table>-->
+    <!--<h1>aac</h1>-->
+    <!--<div>aca</div>-->
+<!--</table>-->
+
+<!--<table>-->
+    <!--<tbody>-->
+    <!--<div></div>-->
+    <!--</tbody>-->
+<!--</table>-->
+
+<!--<p class="important" warning>asdads</p>-->
+
+<!--<div style="background-image: url('');width:30px;height:30px;">-->
+<!--g-->
+<!--</div>-->
+
+<!--<option value="">-->
+    <!--<div>asda</div>-->
+<!--</option>-->
+
+<!--<textarea name="a" id="b" cols="30" rows="10">-->
+    <!--<div>a</div>-->
+<!--</textarea>-->
+<!--<caption></caption>-->
 </body>
 <script>
     // https://blog.csdn.net/u014686861/article/details/25119869
+    // https://segmentfault.com/q/1010000000692603
+
+    //https://cloud.tencent.com/developer/ask/71168
+    // https://blog.csdn.net/jyluwen/article/details/81633663
+    // https://www.cnblogs.com/fangwei0701/p/6913413.html
+
+    // DTD
+    // https://www.w3.org/TR/html4/sgml/dtd.html
+    // HTML Standard parse
+    // https://html.spec.whatwg.org/multipage/parsing.html#tree-construction
+
+   // var number = 0.900719925474098
+   //  var number2 = 0.900719925474097
+   //  var number = 9.007199254740989
+   //  var number2 = 9.00719925474099
+   //  var number = 0.000999999999999988
+   //  var number = 0.9007199254740986
+   //  var number = 99812313.0071992547407
+   //  var number = 100000000000000011111111111
+   //  var number = Number.MAX_SAFE_INTEGER
+   //  var number = Number.MAX_VALUE
+   //   var number = Number.MIN_VALUE
+   //  var number = 1.7976931348623157e+308
+   //  var number = 91.007199254740991e+302
+   //  var number = 9e+302
+   //  var number = 5e-325
+
+    // var number = BigInt("9007199254740995");
+    // var number = 9007199254740995n;
+    // number = 900719925474099112312312312313123n;
+
+
+    // var number = 312313n;
+    // var sum = 3;
+    // var result = number * sum;
+    // console.log(typeof number)
+    // console.log(number)
+    // console.log(result)
+    // let var1 = Number.MAX_VALUE
+    // let var2 = Number.MIN_VALUE
+    // let var3 = Number.MAX_SAFE_INTEGER
+    // let var4 = Number.MIN_SAFE_INTEGER
+    //
+    // // console.log(var1,var2,var3,var4)
+    //
+    // console.log(number)
+    // var number = 9.007199254740989
+    // var number2 = 9.00719925474099
+    // let str1 = number.toString(2);
+    // let arr1 = str1.split('')
+    // console.log(arr1.length)
+    // let str2 = number.toString(2);
+    // let arr2 = str2.split('')
+    // console.log(arr1.length -1)
+    // console.log(arr2.length -1)
+    // var number = 9.007199254740989
+    // console.log(number.toString(2));
+    // let str2 = number.toString(2);
+    // let arr2 = str2.split('')
+    // console.log(arr2.length -1)
+    // var number2 = 9.00719925474099
+    // console.log(number.toString(2));
+    // console.log(number2.toString(2));
+    // console.log(number == number2)
+    // var number = 0.9007199254740981e+308
+    // var number = 90071992547409812
+    //  var number = Number.MAX_VALUE + Number.MAX_VALUE;
+
+    // var number = 7.97693134862315812e+305
+    // console.log(number)
+    // // var number = 9007199254740997;
+    // // console.log(number)
+    //
+    // var number = 3n;
+    // var base = 3;
+    // console.log(number * base)
+
+    // console.log(10n == 10)
+    var number = 0.0900719925474065
+    console.log(number)
 </script>
 </html>

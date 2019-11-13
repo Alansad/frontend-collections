@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin:0;
+      padding:0;
+    }
+    body {
+      display:flex;
+      flex-direction: column;
+    }
+
+    header,footer {
+      flex:0 0 50px;
+      background: pink;
+    }
+
+    #main {
+      display:flex;
+      flex:1;
+      min-height: 100vh;
+    }
+
+    #content {
+      background: palegoldenrod;
+      flex:1;
+    }
+
+    #left,#right{
+      background: paleturquoise;
+      flex:0 0 100px;
+    }
+
+    #left {
+      order:-1;
+    }
+  </style>
+</head>
+<body>
+<header></header>
+<div id="main">
+  <div id="content"></div>
+  <div id="left"></div>
+  <div id="right"></div>
+</div>
+<footer></footer>
+</body>
+</html>

@@ -3,13 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <style>@-webkit-keyframes width-change {0%,100%{width: 320px} 50%{width:260px}}/*测试*/</style>
+  <style>@-webkit-keyframes width-change {0%,100%{width: 320px} 50%{width:260px}}/*测试*/
+  .ellipsis {
+    position: relative;
+    background: rgb(230, 230, 230);
+    width: 260px;
+    max-height: 108px; /* h*n */
+    line-height: 18px; /* h */
+    overflow: hidden;
+  }
+  .ellipsis-container {
+    position: relative;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* n */
+    font-size: 50px; /* w */
+    color: transparent;
+  }
+  .ellipsis-content {
+    color: #000;
+    display: inline;
+    vertical-align: top;
+    font-size: 12px; /* f */
+  }
+  .ellipsis-ghost {
+    position:absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    color: #000;
+  }
+  .ellipsis-ghost:before {
+    content: "";
+    display: block;
+    float: right;
+    width: 50%;
+    height: 100%;
+  }
+  .ellipsis-placeholder {
+    content: "";
+    display: block;
+    float: right;
+    width: 50%;
+    height: 108px; /* h*n */
+  }
+  .ellipsis-more {
+    position: relative;
+    float: right;
+    font-size: 12px; /* f */
+    width: 50px; /* w */
+    height: 18px; /* h */
+    margin-top: -18px; /* -h */
+  }
+  </style>
 </head>
 <body>
-<div style="font-size:12px;line-height: 18px;-webkit-animation: width-change 8s ease infinite;background: rgb(230, 230, 230);">
-  <div style="float:right;margin-left: -50px;width:100%;position:relative;background: hsla(229, 100%, 75%, 0.5);">腾讯成立于1998年11月，是目前中国领先的互联网增值服务提供商之一。成立10多年来，腾讯一直秉承“一切以用户价值为依归”的经营理念，为亿级海量用户提供稳定优质的各类服务，始终处于稳健发展状态。2004年6月16日，腾讯控股有限公司在香港联交所主板公开上市(股票代号700)。</div>
-  <div style="float:right;position:relative;width:50px;height: 108px;color:transparent;background: hsla(334, 100%, 75%, 0.5);">placeholder</div>
-  <div style="float:right;width:50px;height:18px;position: relative;background: hsla(27, 100%, 75%, 0.5);">...更多</div>
+<div class="ellipsis">
+  <div class="ellipsis-container">
+    <div class="ellipsis-content">接下来是以石庭为代表的枯山水庭园闻名的龙安寺——临济宗妙心寺派的寺院。龙安寺一带，曾是在永观元年（984年）建立的，属于円融天皇的御愿寺(*1)——円融寺。之后円融寺逐渐衰落，在平安时代末期，徳大寺实能（藤原実能）在此建立了山庄。而后的宝德2年（1450年），细川胜元接收了德大寺的山庄，建立了龙安寺。不过，龙安寺随后就在应仁之乱期间（1467年-1477年）的战乱中被烧毁。在之后的明应8年（1499年）又由细川胜元的儿子细川政元重建。龙安寺内出名的景物有——石庭、镜容池、蹲踞、各类佛殿等。</div>
+    <div class="ellipsis-ghost">
+      <div class="ellipsis-placeholder"></div>
+      <div class="ellipsis-more">...更多</div>
+    </div>
+  </div>
 </div>
 </body>
 </html>

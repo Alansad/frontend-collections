@@ -1,170 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
 </head>
 <body>
 <div id="insert">
-    <p>
-        <a href=""></a>
-    </p>
+  <p>
+    <a href=""></a>
+  </p>
 </div>
 </body>
 <script>
-    // https://www.cnblogs.com/yyy6/p/6761334.html
-    // https://blog.csdn.net/hj7jay/article/details/53389522
-    // https://blog.csdn.net/z742182637/article/details/51655690
+  // https://www.cnblogs.com/yyy6/p/6761334.html
+  // https://blog.csdn.net/hj7jay/article/details/53389522
+  // https://blog.csdn.net/z742182637/article/details/51655690
 
-    // querySelector() 方法仅仅返回匹配指定选择器的第一个元素,返回的不是一个数组
+  // querySelector() 方法仅仅返回匹配指定选择器的第一个元素,返回的不是一个数组
 
-    // NodeList和HTMLCollection
-    // HTMLCollection是一个特殊的NodeList，它们是实时更新的
-    // Node.childNodes document.getElementsByName获取的是实时的节点
-    // document.querySelectorAll 和 document.querySelector返回的结果是固定的
+  // NodeList和HTMLCollection
+  // HTMLCollection是一个特殊的NodeList，它们是实时更新的
+  // Node.childNodes document.getElementsByName获取的是实时的节点
+  // document.querySelectorAll 和 document.querySelector返回的结果是固定的
 
-    // 遍历querySelectorAll
-    // http://www.webhek.com/post/foreach-queryselectorall-nodelist.html
+  // 遍历querySelectorAll
+  // http://www.webhek.com/post/foreach-queryselectorall-nodelist.html
 
-//    var divs = document.querySelectorAll('div');
-//    [].forEach().call(divs, function(div){
-//        div.style.color = 'red';
-//    })
-    // 必须要这么写才行
-    // 或者传统方法遍历
+  //    var divs = document.querySelectorAll('div');
+  //    [].forEach().call(divs, function(div){
+  //        div.style.color = 'red';
+  //    })
+  // 必须要这么写才行
+  // 或者传统方法遍历
 
-//    for(var i = 0; i < divs.length; i++){
-//        divs[i].style.color = 'red';
-//    }
-    var div = document.createElement('div');
-    div.id = 'test';
-    div.style = "color: red;font-size: 12px";
-    div.innerHTML = '我是新创建的节点';
-    document.body.insertBefore(div,document.querySelector('#insert'));
-    // createTextNode创建文本节点
-    var node = document.createTextNode('我是文本节点');
-//    div.appendChild(node);
+  //    for(var i = 0; i < divs.length; i++){
+  //        divs[i].style.color = 'red';
+  //    }
+  var div = document.createElement('div')
+  div.id = 'test'
+  div.style = "color: red;font-size: 12px"
+  div.innerHTML = '我是新创建的节点'
+  document.body.insertBefore(div, document.querySelector('#insert'))
+  // createTextNode创建文本节点
+  var node = document.createTextNode('我是文本节点')
+  //    div.appendChild(node);
 
-    // 复制节点
-    var node_clone = node.cloneNode(true);
-    div.appendChild(node_clone);
-    var insertnode = document.querySelector('#insert');
-    var div_clone = insertnode.cloneNode(true);
-    // cloneNode的参数设置为true，可以克隆子节点
-    // 内联方式绑定的事件可以复制，但是onclick = function或者addEventListner方式绑定的事件不能够被复制
-    document.body.insertBefore(div_clone, insertnode);
-    // replaceChild(要插入的节点， 被替换的节点)
-    document.body.replaceChild(div, div_clone);
-    // appendChild方法是在父节点中的字节点的末尾添加新的节点（相对于父节点来说）。insertBefor方法是在已有的节点前添加新的节点（相对于子节点来说的）
-    // insertBefore可以在子节点列表的任何位置
-    // appendChild是在子节点的末尾
+  // 复制节点
+  var node_clone = node.cloneNode(true)
+  div.appendChild(node_clone)
+  var insertnode = document.querySelector('#insert')
+  var div_clone = insertnode.cloneNode(true)
+  // cloneNode的参数设置为true，可以克隆子节点
+  // 内联方式绑定的事件可以复制，但是onclick = function或者addEventListner方式绑定的事件不能够被复制
+  document.body.insertBefore(div_clone, insertnode)
+  // replaceChild(要插入的节点， 被替换的节点)
+  document.body.replaceChild(div, div_clone)
+  // appendChild方法是在父节点中的字节点的末尾添加新的节点（相对于父节点来说）。insertBefor方法是在已有的节点前添加新的节点（相对于子节点来说的）
+  // insertBefore可以在子节点列表的任何位置
+  // appendChild是在子节点的末尾
 
-    // 父关系dom操作
-    // parentNode和parentElement
-    // parentNode的父节点可能是Element,Document或DocumentFragment
-    // parentElement的父节点只能是Element，不然就会返回null
-    //console.log(node_clone.parentNode);
+  // 父关系dom操作
+  // parentNode和parentElement
+  // parentNode的父节点可能是Element,Document或DocumentFragment
+  // parentElement的父节点只能是Element，不然就会返回null
+  //console.log(node_clone.parentNode);
 
-    // 子关系dom操作
-    // children返回一个实时的HTMLCollection,子节点都是Element
-    // childNodes返回实时的nodeList，可能包含文本节点，注释等
-    // firstChild  firstElementChild  lastChild lastElementChild
-    // console.log(document.body.children);  // 所以一般用的话用children，拿到的都是Element
-    // console.log(document.body.firstChild);  // 返回的是text
-    //console.log(document.body.firstElementChild);  //用firstElementChild比较好
+  // 子关系dom操作
+  // children返回一个实时的HTMLCollection,子节点都是Element
+  // childNodes返回实时的nodeList，可能包含文本节点，注释等
+  // firstChild  firstElementChild  lastChild lastElementChild
+  // console.log(document.body.children);  // 所以一般用的话用children，拿到的都是Element
+  // console.log(document.body.firstChild);  // 返回的是text
+  //console.log(document.body.firstElementChild);  //用firstElementChild比较好
 
-    // 删除节点
-//    function removeChild(node){
-//        if(!node){
-//            return;
-//        }else{
-//            node.parentNode.removeChild(node);
-//        }
-//    }
+  // 删除节点
+  //    function removeChild(node){
+  //        if(!node){
+  //            return;
+  //        }else{
+  //            node.parentNode.removeChild(node);
+  //        }
+  //    }
 
-    // 兄弟关系dom操作
-    // previousSibling  nextSibling  previousElementSibling  nextElementSibling
-    // console.log(document.querySelector('#insert').nextElementSibling);  //感觉用next/previousElementSibling比较好
+  // 兄弟关系dom操作
+  // previousSibling  nextSibling  previousElementSibling  nextElementSibling
+  // console.log(document.querySelector('#insert').nextElementSibling);  //感觉用next/previousElementSibling比较好
 
-    // 元素属性型api
-    // setAttribute getAttribute
-    // setAttribute(name, value)  不存在name的话先创建再赋值
-    // getAttribute(name) 不存在name的话返回null
-    // hasAttribute('v-click') 判断节点有没有这个属性
-    // removeAttribute 移除属性
+  // 元素属性型api
+  // setAttribute getAttribute
+  // setAttribute(name, value)  不存在name的话先创建再赋值
+  // getAttribute(name) 不存在name的话返回null
+  // hasAttribute('v-click') 判断节点有没有这个属性
+  // removeAttribute 移除属性
 
-//    function jq(id){
-//        this.jq = document.querySelector(id);
-//    }
-//    function $(id){
-//        return new jq(id);
-//    }
-//    jq.prototype = {
-//        Attribute: function(name, value){
-//            if(name && value){
-//                this.jq.setAttribute(name. key);
-//                return this;
-//            }else{
-//                console.log(this.jq);
-//                var getkey = this.jq.getAttribute(name);
-//                return getkey;
-//            }
-//        }
-//    };
-//    var stylekey = $('#test').Attribute('style');
-//    // 重写trim函数
-//    String.prototype.trim = function(){
-//        return this.replace(/(^\s*)|(\s*$)/g, "");
-//    }
+  //    function jq(id){
+  //        this.jq = document.querySelector(id);
+  //    }
+  //    function $(id){
+  //        return new jq(id);
+  //    }
+  //    jq.prototype = {
+  //        Attribute: function(name, value){
+  //            if(name && value){
+  //                this.jq.setAttribute(name. key);
+  //                return this;
+  //            }else{
+  //                console.log(this.jq);
+  //                var getkey = this.jq.getAttribute(name);
+  //                return getkey;
+  //            }
+  //        }
+  //    };
+  //    var stylekey = $('#test').Attribute('style');
+  //    // 重写trim函数
+  //    String.prototype.trim = function(){
+  //        return this.replace(/(^\s*)|(\s*$)/g, "");
+  //    }
 
-//    // 将内联的style字符串转化为obj
-//    function translate(string){
-//        var arr = string.split(';');
-//        var obj = {};
-//        arr.forEach(function(value, index, arr){
-//            if(index !== arr.length -1){
-//                var splitarr = value.split(":");
-//                console.log(splitarr);
-//                var name = splitarr[0].trim();
-//                var key =  splitarr[1].trim();
-//                obj[name] = key;
-//            }
-//        })
-//        return obj;
-//    }
-//    console.log(translate(stylekey));
+  //    // 将内联的style字符串转化为obj
+  //    function translate(string){
+  //        var arr = string.split(';');
+  //        var obj = {};
+  //        arr.forEach(function(value, index, arr){
+  //            if(index !== arr.length -1){
+  //                var splitarr = value.split(":");
+  //                console.log(splitarr);
+  //                var name = splitarr[0].trim();
+  //                var key =  splitarr[1].trim();
+  //                obj[name] = key;
+  //            }
+  //        })
+  //        return obj;
+  //    }
+  //    console.log(translate(stylekey));
 
-    // https://blog.csdn.net/hj7jay/article/details/53389522
-    // 下次再继续看
+  // https://blog.csdn.net/hj7jay/article/details/53389522
+  // 下次再继续看
 
 
-    // 修改style的样式
-//    div.style.setProperty(name,key);
-//    div.style.getProperty(name);
+  // 修改style的样式
+  //    div.style.setProperty(name,key);
+  //    div.style.getProperty(name);
 
-    // document.createDocumentFragment()  文档碎片化，同时插入大量dom
-    // 或者用字符串来拼接
-    // str += '<li>第'+i+'个子节点</li>';
-    // document.getElementById('ul').innerHTML = str;
+  // document.createDocumentFragment()  文档碎片化，同时插入大量dom
+  // 或者用字符串来拼接
+  // str += '<li>第'+i+'个子节点</li>';
+  // document.getElementById('ul').innerHTML = str;
 
-    //  添加删除class
-//    div.classList.add('classList','classList2');
-//    div.classList.remove('classList');
-    // getBoundingClientRect()
-//    function callee(){
-//        console.log(arguments.callee.name);
-//    }
-//    callee(1,2,3);
-//    var arr = [];
-//    if(arr){
-//        console.log(true);
-//    }else{
-//        console.log(false);
-//    }
-//    if ([] == false) {console.log(1);};
-//    if ({} == true ) {console.log(2);};
-//    if ([]) {console.log(3);};
-//    if ([1] == [1]) {console.log(4);};
-//    if ('1' == [1]) {console.log(5);};
+  //  添加删除class
+  //    div.classList.add('classList','classList2');
+  //    div.classList.remove('classList');
+  // getBoundingClientRect()
+  //    function callee(){
+  //        console.log(arguments.callee.name);
+  //    }
+  //    callee(1,2,3);
+  //    var arr = [];
+  //    if(arr){
+  //        console.log(true);
+  //    }else{
+  //        console.log(false);
+  //    }
+  //    if ([] == false) {console.log(1);};
+  //    if ({} == true ) {console.log(2);};
+  //    if ([]) {console.log(3);};
+  //    if ([1] == [1]) {console.log(4);};
+  //    if ('1' == [1]) {console.log(5);};
 </script>
+<style>
+  .ke-agent-sj-sdk {
+    width: 100%
+  }
+
+  .ke-agent-sj-sdk-f-0 {
+    font-size: 0
+  }
+
+  .ke-agent-sj-clear {
+    clear: both
+  }
+
+  .component-agent-xf-pc-1 {
+    position: relative;
+    font-size: 0;
+    height: 170px
+  }
+
+  .component-agent-xf-pc-1 .ke-agent-sj-container {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    white-space: nowrap
+  }
+
+  .component-agent-xf-pc-1 .ke-agent-sj-container .ke-agent-sj-phone {
+    width: 240px;
+    background: #00AE66;
+    display: inline-block;
+    text-align: center;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    padding: 15px 0;
+    vertical-align: middle;
+    font-size: 20px;
+    min-width: 205px;
+    color: #fff;
+    margin-right: 15px
+  }
+
+  .component-agent-xf-pc-1 .ke-agent-sj-container .ke-agent-sj-qr-code {
+    width: 110px;
+    height: 110px;
+    vertical-align: middle
+  }
+
+  .component-agent-xf-pc-2 {
+    position: relative;
+    font-size: 0
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-avatar {
+    display: inline-block;
+    width: 60px;
+    height: 80px;
+    vertical-align: top;
+    margin-right: 15px
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-info {
+    display: inline-block;
+    vertical-align: top;
+    position: relative
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-qr-code {
+    position: absolute;
+    right: -107px;
+    top: 0;
+    width: 90px;
+    height: 90px
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-name {
+    font-weight: 600;
+    font-size: 20px;
+    color: #333;
+    vertical-align: middle;
+    margin-right: 6px
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-tag {
+    display: inline-block;
+    margin-right: 8px;
+    height: 18px;
+    line-height: 18px;
+    font-family: HiraginoSansGB-W3;
+    font-size: 12px;
+    color: #b0b4b4;
+    font-weight: 300;
+    padding: 0 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #eff0f2;
+    vertical-align: middle
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-desc {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 17px;
+    line-height: 17px;
+    font-size: 12px;
+    color: #101d37
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-phone {
+    margin-bottom: 8px;
+    height: 23px;
+    line-height: 23px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fe615a
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-im {
+    background-color: #f4f8fe;
+    border: 1px solid #00AE66;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    color: #00AE66;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    width: 110px
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-im span {
+    vertical-align: middle
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-im .messing-icon {
+    height: 16px;
+    vertical-align: middle;
+    width: 16px;
+    margin-right: 2px
+  }
+</style>
 </html>
+#foreach($user in $list) #if($!user.ucId != 0)
+<div class="component-agent-xf-pc-2">
+  <div class="ke-agent-sj-container"><img src="$!{user.avatar}"
+                                          alt="$!{user.name}"
+                                          class="ke-agent-sj-avatar ke-agent-sj-avatar-$!{adInfo.adId} ke-agent-sj-avatar-$!{user.ucId}">
+    <div class="ke-agent-sj-info">
+      <div>
+        <span class="ke-agent-sj-name ke-agent-sj-name-$!{adInfo.adId} ke-agent-sj-name-$!{user.ucId}"> $!{user.name} </span><span
+        class="ke-agent-sj-tag"> 新房顾问 </span></div>
+      <div class="ke-agent-sj-desc">
+        本盘带看#if($sdkTool.notEmpty($!{user.visitCount}))$!{user.visitCount}#else 0#end次
+        总成交#if($sdkTool.notEmpty($!{user.dealCount}))$!{user.dealCount}#else 0#end单
+      </div>
+      <div class="ke-agent-sj-phone"> $!{user.phone400}</div>
+      <a class="ke-agent-sj-im ke-agent-sj-im-$!{adInfo.adId} ke-agent-sj-im-$!{user.ucId}"
+         data-bl="agentim"
+         data-role="lianjiaim-createtalk-manual"
+         data-ucid="$!{user.ucId}"
+         data-source-port="$!{adInfo.port}"
+         data-source-extends='$sdkTool.toString("house_code",$req.projectName,"app_data",$user.digV)'><img
+        src="https://img.ljcdn.com/beike/agent-sj-sdk/1572418116528.png"
+        class="messing-icon"
+        alt="在线咨询"><span> 在线咨询 </span></a></div>
+  </div>
+</div> #else
+<div class="component-agent-xf-pc-1">
+  <div class="ke-agent-sj-container">
+    <div class="ke-agent-sj-phone"> $!{user.phone400}</div>
+  </div>
+</div> #end #end
+
+<style>
+  <
+  style > .ke-agent-sj-sdk {
+    width: 100%
+  }
+
+  .ke-agent-sj-sdk-f-0 {
+    font-size: 0
+  }
+
+  .ke-agent-sj-clear {
+    clear: both
+  }
+
+  .component-agent-xf-pc-1 {
+    position: relative;
+    font-size: 0;
+    height: 170px
+  }
+
+  .component-agent-xf-pc-1 .ke-agent-sj-container {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    white-space: nowrap
+  }
+
+  .component-agent-xf-pc-1 .ke-agent-sj-container .ke-agent-sj-phone {
+    width: 240px;
+    background: #00ae66;
+    display: inline-block;
+    text-align: center;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    padding: 15px 0;
+    vertical-align: middle;
+    font-size: 20px;
+    min-width: 205px;
+    color: #fff;
+    margin-right: 15px
+  }
+
+  .component-agent-xf-pc-1 .ke-agent-sj-container .ke-agent-sj-qr-code {
+    width: 110px;
+    height: 110px;
+    vertical-align: middle
+  }
+
+  .component-agent-xf-pc-2 {
+    position: relative;
+    font-size: 0
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-avatar {
+    display: inline-block;
+    width: 60px;
+    height: 80px;
+    vertical-align: top;
+    margin-right: 15px
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-info {
+    display: inline-block;
+    vertical-align: top;
+    position: relative
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-qr-code {
+    position: absolute;
+    right: -107px;
+    top: 0;
+    width: 90px;
+    height: 90px
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-name {
+    font-weight: 600;
+    font-size: 20px;
+    color: #333;
+    vertical-align: middle;
+    margin-right: 6px
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-tag {
+    display: inline-block;
+    margin-right: 8px;
+    height: 18px;
+    line-height: 18px;
+    font-family: HiraginoSansGB-W3;
+    font-size: 12px;
+    color: #b0b4b4;
+    font-weight: 300;
+    padding: 0 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background-color: #eff0f2;
+    vertical-align: middle
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-desc {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    height: 17px;
+    line-height: 17px;
+    font-size: 12px;
+    color: #101d37
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-phone {
+    margin-bottom: 8px;
+    height: 23px;
+    line-height: 23px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fe615a
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-im {
+    background-color: #f4f8fe;
+    border: 1px solid #00ae66;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    color: #00ae66;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    width: 110px
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-im span {
+    vertical-align: middle
+  }
+
+  .component-agent-xf-pc-2 .ke-agent-sj-container .ke-agent-sj-im .messing-icon {
+    height: 16px;
+    vertical-align: middle;
+    width: 16px;
+    margin-right: 2px
+  }</style>
+</
+
+style
+
+>

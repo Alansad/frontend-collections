@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>基于Vue的随机星星评分组件</title>
+  <link rel="stylesheet prefetch"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.min.css">
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="js/vue.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <div class="card">
+    <div class="card-content">
+      <div class="media-content">
+        <p class="title is-4">随机星星评分</p>
+        <p class="subtitle is-6">基于Vue的简易评分组件</p>
+      </div>
+      <star-rating :max="5" :current="value"></star-rating>
+      <br>
+      <br>
+      <button class="button" @click="randomValue">点此评分 ({{value}})</button>
+    </div>
+  </div>
+</div>
+
+

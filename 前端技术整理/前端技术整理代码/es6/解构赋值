@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  // https://www.jianshu.com/p/d4a3baeac680
+  let name,age
+  // 需要用圆括号，包裹起来
+  ({name,age} = {name:"swr",age:28})  // 这里需要注意如果重复声明的话只能用var关键字
+  console.log(name) // 'swr'
+  console.log(age) // 28
+  let { length } = "hello swr"
+</script>
+</html>

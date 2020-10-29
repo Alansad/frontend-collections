@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  function cloneDeep(origin){
+    let result
+    if(origin && typeof origin === 'object'){
+      result = Array.isArray(origin) ? [] : {}
+      for(let key in origin){
+        if(origin.hasOwnProperty(key)){
+          if(typeof origin[key] === 'object'){
+            result[key] = cloneDeep(origin[key])
+          }else{
+            result[key] = origin[key]
+          }
+        }
+      }
+    }else{
+      result = origin
+    }
+    return result
+  }
+  console.log(cloneDeep({
+    a: {
+      b: [
+        '1',
+        {
+          d:1
+        }
+      ]
+    }
+  }))
+</script>
+</html>

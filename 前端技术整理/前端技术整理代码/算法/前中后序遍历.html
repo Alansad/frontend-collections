@@ -7,4 +7,36 @@
 <body>
 
 </body>
+<script>
+    // https://www.cnblogs.com/ruilin/p/11599136.html
+    function TreeNode(x) {
+        this.val = x;
+        this.left = null;
+        this.right = null;
+    }
+    function reConstructBinaryTree(pre, vin)
+    {
+        // write code here
+        if(pre.length === 0 || vin.length === 0){
+            return null
+        }
+        let rootValue = pre[0]
+        let newRoot = new TreeNode(rootValue)
+        if(pre.length === 1){
+            return newRoot
+        }
+        // 要先在vin里面把这个rootValue的位置找到才行
+        let vinIndex = 0
+        for(let i = 0; i < vin.length -1; i++){
+            if(rootValue === vin[i]){
+                vinIndex = i
+            }
+        }
+        newRoot.left = reConstructBinaryTree(pre.slice(1,vinIndex + 1), vin.slice(0, vinIndex))
+        newRoot.right = reConstructBinaryTree(pre.slice(vinIndex+1), vin.slice(vinIndex+1))
+        return newRoot
+    }
+    let result = reConstructBinaryTree([1,2,4,3,5,6],[4,2,1,5,3,6])
+    console.log(result)
+</script>
 </html>

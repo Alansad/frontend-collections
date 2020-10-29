@@ -8,6 +8,12 @@
 
 </body>
 <script>
+    // 终极https://javascript.ruanyifeng.com/oop/prototype.html#toc4
+    // 精确判断js的类型
+    // https://blog.csdn.net/qq_39408204/article/details/91492061
+</script>
+<script>
+    // https://javascript.ruanyifeng.com/oop/prototype.html#toc4
     // https://www.jb51.net/article/77948.htm
     // typeof instanceof 以及判断类型
     // js里面基本数据类型有六大类(不算es6)
@@ -31,7 +37,7 @@
     var b = Object.assign({},a); // 这种情况会返回false
     console.log(a instanceof test);
     console.log(b instanceof test);  //false 只要不是test生成的实例，都是false
-//    console.log(a instanceof b);  //后面的参数不能是实例
+   // console.log(a instanceof b);  //后面的参数不能是实例
     console.log(typeof(window));
 
     // instancecof 用法
@@ -76,6 +82,7 @@
     console.log(typeof str2);
     console.log(str1);
     console.log(typeof null);
+    console.log(str === str2)
     // ""和new String变量存储的区域不同
     // https://blog.csdn.net/duansale/article/details/74951091
 
@@ -89,5 +96,10 @@
         console.log(true);
     }
     //  这里是会返回true的,要先判断是否是数组，再判断数组是否为空
+
+    // Infinity是可以比较的，NaN的话总是false
+    // https://www.cnblogs.com/ruoyin/p/9166579.html
+    console.log(Infinity === Infinity)
+    console.log(NaN === NaN)
 </script>
 </html>

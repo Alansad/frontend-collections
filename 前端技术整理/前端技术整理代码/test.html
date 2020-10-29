@@ -3,62 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <style>
-    *{
-      margin: 0;
-      padding: 0;
-      font-size: 12px;
-    }
-    .wrapper{
-      width: 260px;
-      line-height: 18px;
-      max-height: 54px;
-      overflow: hidden;
-    }
-    .content{
-      position: relative;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      font-size: 60px;
-    }
-    .totaltext{
-      display: inline;
-      font-size: 12px;
-      vertical-align: top;
-    }
-    .yiweiwrapper{
-      position: absolute;
-      width: 50%;
-      height: 100%;
-      top: 0;
-      left: 50%;
-    }
-    .tianchong{
-      float: right;
-      width: 100%;
-      height: 54px;
-    }
-    .more{
-      float: right;
-      margin-top: -18px;
-      margin-right: 10px;
-    }
-  </style>
+  <script>
+    window.BMAP_PROTOCOL = "https"
+  </script>
+  <script src="https://api.map.baidu.com/getscript?v=3.0&ak=zcFRPjGqGAUbQOsM6yREM7YmQELemoG7&s=1"></script>
+  <!--<script src="https://api.map.baidu.com/api?v=3.0&ak=zcFRPjGqGAUbQOsM6yREM7YmQELemoG7&s=1"></script>-->
 </head>
 <body>
-<div class="wrapper">
-  <div class="content">
-    <p class="totaltext">接下来是以石庭为代表的枯山水庭园闻名的龙安寺——临济宗妙心寺派的寺院。龙安寺一带，曾是在永观元年（984年）建立的，属于円融天皇的御愿寺(*1)——円融寺。之后円融寺逐渐衰落，在平安时代末期，徳大寺实能（藤原実能）在此建立了山庄。而后的宝德2年（1450年），细川胜元接收了德大寺的山庄，建立了龙安寺。不过，龙安寺随后就在应仁之乱期间（1467年-1477年）的战乱中被烧毁。在之后的明应8年（1499年）又由细川胜元的儿子细川政元重建。龙安寺内出名的景物有——石庭、镜容池、蹲踞、各类佛殿等。</p>
-    <div class="yiweiwrapper">
-      <div class="tianchong">
-
-      </div>
-      <div class="more">
-        <span>...</span><span style="color:green">显示更多</span>
-      </div>
-    </div>
-  </div>
-</div>
+<div id="allmap"></div>
+<!--<div id="container"></div>-->
+<!--<input type="file" accept="*" onchange="loadFile(event)">-->
+<!--<img id="output"/>-->
 </body>
+<!--<script>-->
+  <!--console.log('script start')-->
+
+  <!--async function async1() {-->
+    <!--await async2()-->
+    <!--console.log('async1 end')-->
+  <!--}-->
+  <!--async function async2() {-->
+    <!--console.log('async2 end')-->
+  <!--}-->
+  <!--async1()-->
+
+  <!--setTimeout(function() {-->
+    <!--console.log('setTimeout')-->
+  <!--}, 0)-->
+
+  <!--new Promise(resolve => {-->
+    <!--console.log('Promise')-->
+    <!--resolve()-->
+  <!--})-->
+    <!--.then(function() {-->
+      <!--console.log('promise1')-->
+    <!--})-->
+    <!--.then(function() {-->
+      <!--console.log('promise2')-->
+    <!--})-->
+
+  <!--console.log('script end')-->
+<!--</script>-->
+<script>
+  var map = new BMap.Map("allmap");
+  map.centerAndZoom(new BMap.Point(116.404, 39.915), 12);
+  var output = "从上地到西单坐公交需要";
+  var searchComplete = function (results){
+    if (transit.getStatus() != BMAP_STATUS_SUCCESS){
+      return ;
+    }
+    var plan = results.getPlan(0);
+    output += plan.getDuration(true) + "\n";  //获取时间
+    output += plan.getDistance(true) + "\n";  //获取距离
+    console.log('output',output)
+
+  }
+  var transit = new BMap.WalkingRoute(map, {renderOptions: {map: map},
+    onSearchComplete: searchComplete
+  });
+  var start=new BMap.Point(116.404844,39.911836);
+  var end=new BMap.Point(116.308102,40.056057);
+  transit.search(start, end);
+</script>
+<script>
+  // var map = new BMap.Map("container");
+  // map.centerAndZoom(new BMap.Point(116.404, 39.915), 14);
+  // var driving = new BMap.DrivingRoute(map, {
+  //   renderOptions: {
+  //     map: map,
+  //     autoViewport: true
+  //   }
+  // });
+  // var start = new BMap.Point(116.310791, 40.003419);
+  // var end = new BMap.Point(116.486419, 39.877282);
+  // driving.search(start, end);
+</script>
+<script>
+  // const obj = {
+  //   a: () => {
+  //     console.log(this.b)
+  //   },
+  //   b: 1
+  // }
+  // obj.a()  //window，继承作用域链 箭头函数=>window
+
+  // const obj = function(){
+  //   return () => {
+  //     console.log(this)
+  //   }
+  // }
+  // function testFunc(){
+  //   obj()()
+  // }
+  // testFunc()
+  // const obj = {
+  //   a:1,
+  //   b: () => {
+  //     console.log(this)
+  //   }
+  // }
+  // obj.b()
+</script>
 </html>

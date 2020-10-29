@@ -5,9 +5,21 @@
     <title>Title</title>
 </head>
 <body>
-
+    <div id="testFunc">
+        asdasd
+    </div>
 </body>
 <script>
+    // document.querySelector('#testFunc').addEventListener('click',function(e){
+    //     console.log(e)
+    //     console.log(e.currentTarget)
+    // },false)
+    document.querySelector('#testFunc').onclick = function(e){
+        console.log(e)
+    }
     // https://www.cnblogs.com/liugang-vip/p/5616484.html
+
+    // 关于tagName和nodeName
+    // https://www.cnblogs.com/MissBean/p/4300914.html
 </script>
 </html>

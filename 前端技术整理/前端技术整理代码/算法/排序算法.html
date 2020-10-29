@@ -5,16 +5,20 @@
     <title>Title</title>
 </head>
 <body>
-
+    <div id="testClick">
+        asda
+    </div>
 </body>
 <script>
-    // https://www.cnblogs.com/onepixel/articles/7674659.html
-    for(var i = 0; i < 5; i++){
-        (function(i){
-            setTimeout(function(){
-                console.log(i);
-            },i*1000);
-        })(i);
+    function clickFunc(e){
+        console.log(123)
+        console.log(e)
     }
+    document.querySelector('#testClick').addEventListener('click',clickFunc)
+
+    // https://www.cnblogs.com/onepixel/articles/7674659.html
+    // https://segmentfault.com/a/1190000015488549
+    // http://www.ruanyifeng.com/blog/2011/04/quicksort_in_javascript.html?20110404221633
+
 </script>
 </html>

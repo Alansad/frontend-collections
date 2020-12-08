@@ -65,33 +65,35 @@
 </script>
 <script>
 
+    //https://www.cnblogs.com/echolun/p/12144344.html
+
     // 实现call函数
-    Function.prototype._call = function(origin){
-        const obj = origin ? Object(origin) : window
-        obj.fn = this
-        const args = [...arguments].slice(1)
-        const result = obj.fn(...args)
-        delete obj.fn
-        return result
-    }
+   Function.prototype._call = function(origin){
+       const obj = origin ? Object(origin) : window
+       obj.fn = this
+       const args = [...arguments].slice(1)
+       const result = obj.fn(...args)
+       delete obj.fn
+       return result
+   }
 
-    // 实现apply
-    Function.prototype._apply = function(origin, arr){
-        const obj = origin ? Object(origin) : window
-        obj.fn = this
-        const result = obj.fn(...arr)
-        delete obj.fn
-        return result
-    }
+    // 实现apply函数
+   Function.prototype._bind = function(origin, paramArr){
+       const obj = origin ? Object(origin) : window
+       obj.fn = this
+       const result = obj.fn(...paramArr)
+       delete obj.fn
+       return result
+   }
 
-    // 实现bind
+    // 实现bind函数
     Function.prototype._bind = function(origin){
-        const obj = origin ? Object(origin) : window
-        obj.fn = this
-        const args = [...arguments].slice(1)
-        return function(){
-            return obj.fn(...args)
-        }
+       const obj = origin ? Object(origin) : window
+       obj.fn = this
+       const args = [...arguments].slice(1)
+       return function(){
+           obj.fn(...args)
+       }
     }
 
     const test1 = {

@@ -10,5 +10,46 @@
 <script>
     // https://www.cnblogs.com/malingyang/p/6535805.html
     // https://blog.csdn.net/yangbo1993/article/details/79034868
+
+    // 实现一个Promise.all
+    const promise_all = function (promiseArr) {
+        if(Object.prototype.toString.call(promiseArr) !== '[object Array]'){
+            throw new TypeError('param must be an Array type!')
+        }
+        const successResponse = []
+        const length = promiseArr.length
+        let failResponse
+        return new Promise(async (resolve, reject) => {
+            for(let i = 0; i < length; i++){
+                try{
+                    const result = await promiseArr[i]
+                    successResponse.push(result)
+                }catch (e) {
+                    if(!failResponse){
+                        failResponse = e
+                    }
+                }
+            }
+            if(failResponse){
+                reject(failResponse)
+            }else{
+                resolve(successResponse)
+            }
+        })
+    }
+    const promise1 = new Promise((resolve, reject) => {
+        resolve(1)
+    })
+
+    const promise2 = new Promise((resolve, reject) => {
+        reject(2)
+    })
+    promise_all([promise1, promise2]).then((res) => {
+        console.log(res)
+    }).catch((err) => {
+        console.log(err)
+    })
+
+
 </script>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>柯里化</title>
+</head>
+<body>
+
+</body>
+<script>
+  // https://juejin.im/post/6893110732423397383
+
+  function curry(func){
+    return function curriedFunc(...args){
+      if(args.length >= func.length){
+        return func(...args)
+      }else{
+        return function(...curriedArgs){
+          return curriedFunc(...args, ...curriedArgs)
+        }
+      }
+    }
+  }
+
+  function add (a, b, c){
+    return a + b + c
+  }
+
+  const _curry = curry(add)
+  console.log(_curry(1, 2)(3))
+  // console.log(add.length)
+</script>
+</html>

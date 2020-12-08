@@ -7,13 +7,33 @@
 <body>
 
 </body>
+<!--<script>-->
+  <!--// https://www.jianshu.com/p/d4a3baeac680-->
+  <!--let name,age-->
+  <!--// 需要用圆括号，包裹起来-->
+  <!--({name,age} = {name:"swr",age:28})  // 这里需要注意如果重复声明的话只能用var关键字-->
+  <!--console.log(name) // 'swr'-->
+  <!--console.log(age) // 28-->
+  <!--let { length } = "hello swr"-->
+<!--</script>-->
 <script>
-  // https://www.jianshu.com/p/d4a3baeac680
-  let name,age
-  // 需要用圆括号，包裹起来
-  ({name,age} = {name:"swr",age:28})  // 这里需要注意如果重复声明的话只能用var关键字
-  console.log(name) // 'swr'
-  console.log(age) // 28
-  let { length } = "hello swr"
+  downloadRes = async (url, name) => {
+    let response = await fetch(url)
+    // 内容转变成blob地址
+    let blob = await response.blob()
+    // 创建隐藏的可下载链接
+    let objectUrl = window.URL.createObjectURL(blob)
+    let a = document.createElement('a')
+    //地址
+    a.href = objectUrl
+    //修改文件名
+    a.download = name
+    // 触发点击
+    document.body.appendChild(a)
+    a.click()
+    //移除
+    setTimeout(() => document.body.removeChild(a), 1000)
+  }
+  downloadRes('https:\\/\\/img.ljcdn.com\\/xhdic-frame\\/7507c30f-fb03-44d1-9218-e639314b562d.jpg.500x.jpg', '123132')
 </script>
 </html>

@@ -9,10 +9,18 @@
 </body>
 <script>
     // https://blog.csdn.net/weixin_41644419/article/details/80418575
-    function cons(){
+   function newObj(func, ...args){
+       const obj = {}
+       obj.__proto__ = func.prototype
+       return func.call(obj, ...args)
+   }
 
-    }
-    var a = new cons();
-    // 先创建a = {};然后 a.__proto__ = cons.prototype; 然后cons.call(a)
+   function newCat(age, length){
+       this.age = age
+       this.length = length
+       return this
+   }
+   const obj = newObj(newCat, 1, 2)
+   console.log(obj)
 </script>
 </html>

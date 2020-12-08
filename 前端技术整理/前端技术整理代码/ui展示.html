@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+  <title>ui展示</title>
+  <style type="text/css">
+    .contact-detail-component-company-card .contact-wrapper {
+      padding: 0 19.9875px;
+      content: "viewport-units-buggyfill; padding: 0 19.9875px"
+    }
+
+    .contact-detail-component-company-card .contact-wrapper .card-title {
+      padding: 19.9875px 0;
+      font-family: PingFangSC-Medium;
+      font-size: 18px;
+      height: 18.75px;
+      color: #222;
+      content: "viewport-units-buggyfill; padding: 19.9875px 0 19.9875px 0; font-size: 18px; height: 18.75px"
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      align-items:center;
+      -webkit-align-items:center;
+      box-align:center;
+      -moz-box-align:center;
+      -webkit-box-align:center;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+
+    .contact-detail-component-company-card .contact-wrapper .card-content {
+      position: relative;
+      padding-bottom: 12.4875px;
+      content: "viewport-units-buggyfill; padding-bottom: 12.4875px"
+    }
+
+    .contact-detail-component-company-card .contact-wrapper .card-content .contact-info-item {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      font-family: PingFangSC-Regular;
+      font-size: 13.9875px;
+      margin-bottom: 4.00125px;
+      content: "viewport-units-buggyfill; font-size: 13.9875px; margin-bottom: 4.00125px"
+    }
+
+    .contact-detail-component-company-card .contact-wrapper .card-content .contact-info-item .label {
+      width: 100px;
+      color: #999
+    }
+
+    .contact-detail-component-company-card .contact-wrapper .card-content .contact-info-item .text {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      word-break: break-all;
+      color: #222
+    }
+
+    .contact-detail-component-company-card .contact-wrapper .card-content .contact-info-item:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      border-bottom: 1px solid #eee;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5)
+    }
+  </style>
+</head>
+<body>
+<div class="contact-detail-component-company-card">
+  <div class="contact-wrapper">
+    <div class="card-title">
+      <span class="title">个人信息</span>
+    </div>
+    <div class="card-content">
+      <div class="contact-info-item">
+        <span class="label">个人标签：</span>
+        <span class="text">标签1,标签2,标签3</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">手机：</span>
+        <span class="text">1231231</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">微信号：</span>
+        <span class="text">weixin12313</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">备注：</span>
+        <span class="text">12313萨达大厦大厦大厦大厦大厦大厦大厦的</span>
+      </div>
+    </div>
+    <div class="card-title">
+      <span class="title">公司信息</span>
+    </div>
+    <div class="card-content">
+      <div class="contact-info-item">
+        <span class="label">公司名称：</span>
+        <span class="text">叫什么公司</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">在职时间：</span>
+        <span class="text">2020-10 ~ 至今</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">所属公司：</span>
+        <span class="text">公司</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">公司层级：</span>
+        <span class="text">层级1</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">个人职级：</span>
+        <span class="text">主管</span>
+      </div>
+      <div class="contact-info-item">
+        <span class="label">认证资料：</span>
+        <div>
+          <div>
+            <img height="200"
+                 src="https:\/\/img.ljcdn.com\/xhdic-frame\/7507c30f-fb03-44d1-9218-e639314b562d.jpg.500x.jpg"
+                 alt="认证资料">
+          </div>
+          <div>
+            <a style="text-decoration: none" href="https:\/\/img.ljcdn.com\/xhdic-frame\/7507c30f-fb03-44d1-9218-e639314b562d.jpg.500x.jpg" target="_blank">点此处查看大图</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
+
+<script>
+  // 防抖，在一定时间内如果再次触发，就取消之前的，采用这次的
+  function _debounce(func, wait){
+    let first = false
+    let timer = null
+    return () => {
+      const context = this
+      const args = [...arguments]
+      if(first){
+        func.apply(context, args)
+      }else{
+        if(timer !== null){
+          clearTimeout(timer)
+        }else{
+          timer = setTimeout(function(){
+            func.apply(context, args)
+          },wait)
+        }
+      }
+    }
+  }
+
+  function _debounceTwo(func, wait) {
+    let lastTime
+    return () => {
+      if(!lastTime){
+        lastTime = new Date()
+      }
+      const endTime = new Date()
+      const context = this
+      const args = [...arguments]
+      if(endTime - lastTime < wait){
+        lastTime = new Date()
+      }else{
+        func.apply(context, args)
+        lastTime = new Date()
+      }
+    }
+  }
+
+  // 节流，一定时间内只执行一次
+  function _throttle(func, wait) {
+    let startTime
+    return () => {
+      if(!startTime){
+        startTime = new Date()
+      }
+      const context = this
+      const args = [...arguments]
+      if(new Date() - startTime > wait){
+        startTime = new Date()
+        func.apply(context, args)
+      }
+    }
+  }
+
+  function _throttletwo(func, wait) {
+    let timer
+    return () => {
+      const context = this
+      const args = [...arguments]
+      if(!timer){
+        timer = setTimeout(function(){
+          func.apply(context, args)
+        }, wait)
+      }
+    }
+  }
+</script>

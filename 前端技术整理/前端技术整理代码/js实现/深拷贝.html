@@ -9,23 +9,18 @@
 </body>
 <script>
   function cloneDeep(origin){
-    let result
-    if(origin && typeof origin === 'object'){
-      result = Array.isArray(origin) ? [] : {}
-      for(let key in origin){
-        if(origin.hasOwnProperty(key)){
-          if(typeof origin[key] === 'object'){
-            result[key] = cloneDeep(origin[key])
-          }else{
-            result[key] = origin[key]
-          }
-        }
+    if(typeof origin !== 'object'){
+      return origin
+    }
+    const result = Array.isArray(origin) ? [] : {}
+    for(let key in origin){
+      if(origin.hasOwnProperty(key)){
+        result[key] = cloneDeep(origin[key])
       }
-    }else{
-      result = origin
     }
     return result
   }
+
   console.log(cloneDeep({
     a: {
       b: [

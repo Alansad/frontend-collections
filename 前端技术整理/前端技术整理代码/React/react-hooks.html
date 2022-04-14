@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  const useSmallScreen = (initialValue) => {
+    const [onSmallScreen, setOnsmallScreen] = useState(initialValue)
+    useEffect(() => {
+      checkScreenSize()
+      window.addEventListener('resize', checkScreenSize)
+    }, [])
+
+    let checkScreenSize = () => {
+      setOnsmallScreen(window.innerWidth < 768);
+    }
+    return onSmallScreen
+  }
+</script>
+<script>
+  console.log('1');
+
+  setTimeout(function () {
+    console.log('2');
+    new Promise(function (resolve) {
+      console.log('4');
+      resolve();
+    }).then(function () {
+      console.log('5')
+    })
+  })
+  new Promise(function (resolve) {
+    console.log('7');
+    resolve();
+  }).then(function () {
+    console.log('8')
+  })
+
+  setTimeout(function () {
+    console.log('9');
+
+    new Promise(function (resolve) {
+      console.log('11');
+      resolve();
+    }).then(function () {
+      console.log('12')
+    })
+  })
+</script>
+</html>

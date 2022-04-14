@@ -77,23 +77,23 @@
        return result
    }
 
-    // 实现apply函数
-   Function.prototype._bind = function(origin, paramArr){
-       const obj = origin ? Object(origin) : window
-       obj.fn = this
-       const result = obj.fn(...paramArr)
-       delete obj.fn
-       return result
-   }
-
     // 实现bind函数
     Function.prototype._bind = function(origin){
        const obj = origin ? Object(origin) : window
        obj.fn = this
        const args = [...arguments].slice(1)
-       return function(){
-           obj.fn(...args)
+       return function(...newArgs){
+           obj.fn(...args, ...newArgs)
        }
+    }
+
+    // 实现apply函数
+    Function.prototype._apply = function(origin, paramArr){
+       const obj = origin ? origin : window
+        obj.applyFunc = this
+        const result = obj.applyFunc(...paramArr)
+        delete obj.applyFunc
+        return result
     }
 
     const test1 = {
@@ -112,8 +112,8 @@
         }
     }
 
-    // test1.func._apply(test2, ['arg1', 'arg2'])
+    test1.func._apply(test2, ['arg1', 'arg2'])
     // test1.func._call(test2, 'arg1', 'arg2')
-    test1.func._bind(test2, 'arg1', 'arg2')()
+    // test1.func._bind(test2, 'arg1', 'arg2')()
 </script>
 </html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  // 实现一个reduce函数 https://blog.csdn.net/qq_35779012/article/details/119046383
+
+  // 应用与实现 https://www.jianshu.com/p/6bd41e40a1d0
+
+  const fn1 = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log('fn1')
+        resolve(1)
+      }, 2000)
+    })
+  }
+
+  const fn2 = () => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log('fn2')
+        resolve(2)
+      }, 1000)
+    })
+  }
+
+  const arr = [fn1, fn2]
+
+  const excPromiseInOrder = (array, value) => {
+    array.reduce(
+      (prePromise, curPromise) => prePromise.then(curPromise),
+      Promise.resolve(value)
+    )
+  }
+
+  excPromiseInOrder(arr, 'init')
+
+  Array.prototype.reduceTo = function(callback, initialValue){
+    if(this.length === 0){
+      return []
+    }
+    let value = initialValue ? initialValue : this[0]
+    for(let i = initialValue ? 0 : 1; i < this.length; i++){
+      let current = this[i]
+      value = callback(value, current, i, this)
+    }
+    return value
+  }
+
+  const reduceArr = [1,2,3,4,5]
+  const reduceResult = reduceArr.reduceTo((pre, current, index, arr) => {
+    return pre + arr[index]
+  }, 5)
+  console.log('reduceResult', reduceResult)
+</script>
+</html>

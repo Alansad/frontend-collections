@@ -10,17 +10,16 @@
 <script>
   // https://juejin.im/post/6893110732423397383
 
-  function curry(func){
-    return function curriedFunc(...args){
-      if(args.length >= func.length){
-        return func(...args)
-      }else{
-        return function(...curriedArgs){
-          return curriedFunc(...args, ...curriedArgs)
-        }
-      }
-    }
-  }
+  // function curry(func){
+  //   return function curriedFunc(...args){
+  //     if(args.length >= func.length){
+  //       return func(...args)
+  //     }else{
+  //       return function(...curriedArgs){
+  //         return curriedFunc(...args, ...curriedArgs)
+  //       }
+  //     }
+  //   }
 
   function add (a, b, c){
     return a + b + c

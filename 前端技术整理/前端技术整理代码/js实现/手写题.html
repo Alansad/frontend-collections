@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  // https://juejin.cn/post/6946136940164939813#heading-26
+  // 手写题大全
+
+  // 手写Object.create
+  Object.prototype.create = function(obj){
+    function F(){}
+    F.prototype = obj
+    return new F()
+  }
+
+  // 手写instanceof方法
+  function newInstanceOf(A, B){
+    let left = A.__proto__
+    let target = B.prototype
+    while(left){
+      if(left === target){
+        return true
+      }
+      left = left.__proto__
+    }
+    return false
+  }
+
+  // 手写new操作符
+  function createObj(func, ...args){
+    const obj = {}
+    obj.__proto__ = func.prototype
+    return func.call(obj, ...args)
+  }
+  function newCat(length, name){
+    this.length = length
+    this.name = name
+    return this
+  }
+
+  // 手写json.stringify
+  function stringify(json){
+    const type = typeof json
+    const toStringCall = Object.prototype.toString.call(json)
+    if(type === 'object'){
+      if(toStringCall === '[object Null]'){
+        return 'null'
+      }else if(toStringCall === '[object Function]'){
+        return stringify(json.toJSON)
+      }else if(toStringCall === '[object Object]'){
+        // {a: 1, b: 2} => '{"a":"2", "b": "2"}'
+        let tmp = []
+        for(let key in json){
+          if(json.hasOwnProperty(key)){
+            tmp.push(`${stringify(key)}:${stringify(json[key])}`)
+          }
+        }
+        return `{${tmp.join(',')}}`
+      }else if(toStringCall === '[object Array]'){
+        // [1,2,"3",4] => '[1,2,"3",4]'
+        let tmp = '['
+        for(let i = 0; i < json.length; i++){
+          tmp += i ? `,${stringify(json[i])}` :stringify(json[i])
+        }
+        tmp += ']'
+        return tmp
+      }
+    }else if(type === 'number'){
+      return isFinite(json) ? 'null' : json.toString()
+    }else if(type === 'undefined'){
+      return 'null'
+    }
+    try{
+      if(json.toJSON){
+        return json.toJSON()
+      }
+      return json.toString()
+    }catch (e) {
+      console.log(e)
+      return ''
+    }
+  }
+
+  // 手写promise
+  const PENDING = 'pending'
+  const RESOLVED = 'resolved'
+  const REJECT = 'reject'
+  function MyPromise(fn){
+    const self = this
+    this.state = PENDING
+    this.value = null
+    this.resolvedCallbacks = []
+    this.rejectCallbacks = []
+    function resolve(value){
+      if(value instanceof MyPromise){
+        return value.then(resolve, reject)
+      }
+      setTimeout(() => {
+        if(self.state === PENDING){
+          self.state = RESOLVED
+          self.value = value
+          self.resolvedCallbacks.forEach(callback => {
+            callback(value)
+          })
+        }
+      }, 0)
+    }
+    function reject(value){
+      setTimeout(() => {
+        if(self.state === PENDING){
+          self.state = REJECT
+          self.value = value
+          self.rejectCallbacks.forEach(callback => {
+            callback(value)
+          })
+        }
+      }, 0)
+    }
+    try{
+      fn(resolve, reject)
+    }catch (e) {
+      reject(e)
+    }
+  }
+  // 实现Promise.then
+  MyPromise.prototype.then = function(onResolved, onRejected){
+    onResolved = typeof onResolved === 'function' ? onResolved : function(value){
+      return value
+    }
+    onRejected = typeof onRejected === 'function' ? onRejected : function(value){
+      return value
+    }
+    if(this.state === PENDING){
+      this.resolvedCallbacks.push(onResolved)
+      this.rejectCallbacks.push(onRejected)
+    }
+    if(this.state === RESOLVED){
+      onResolved(this.value)
+    }
+    if(this.state === REJECT){
+      onRejected(this.value)
+    }
+  }
+  // 实现Promise.catch
+  MyPromise.prototype.catch = function(callback){
+    callback = typeof callback  === 'function' ? callback : function(err){
+      return err
+    }
+    if(this.state === PENDING){
+      this.rejectCallbacks.push(callback)
+    }
+    if(this.state === REJECT){
+      callback(this.value)
+    }
+  }
+  // 实现Promise.all
+  MyPromise.prototype.all = function(promiseList){
+    return new MyPromise((resolve, reject) => {
+      if(!Array.isArray(promiseList)){
+        throw new TypeError('argument must be an array')
+      }
+      let resolvedCounter = 0
+      const promiseNum = promiseList.length
+      let resolvedResults = []
+      for(let i = 0; i < promiseNum; i++){
+        MyPromise.resolve(promiseList[i]).then((value) => {
+          resolvedCounter++
+          resolvedResults[i] = value
+          if(resolvedCounter === promiseNum){
+            return resolve(resolvedResults)
+          }
+        }, (err) => {
+          reject(err)
+        })
+      }
+    })
+  }
+
+  // 防抖
+  function debounce(func, wait, immediate){
+    let timer = null
+    let judge = immediate
+    return function(){
+      const context = this
+      const args = arguments
+      if(judge){
+        func(...args)
+        judge = false
+        return
+      }
+      if(timer !== null){
+        clearTimeout(timer)
+      }else{
+        timer = setTimeout(function(){
+          func.apply(context, args)
+        }, wait)
+      }
+    }
+  }
+  // 节流
+  function throttle(func, wait, immediate){
+    let timer = null
+    let judge = immediate
+    return function(){
+      const context = this
+      const args = arguments
+      if(judge){
+        func(...args)
+        judge = false
+        return
+      }
+      if(timer){
+        return
+      }
+      timer = setTimeout(function(){
+        func.apply(context, args)
+      }, wait)
+    }
+  }
+
+  function throttleTwo(func, wait, immediate){
+    let judge = false
+    let now = 0
+    return function(){
+      if(!judge && !immediate){
+        now = new Date().getTime()
+        judge = true
+        return
+      }
+      if(new Date().getTime() - now > wait){
+        func(...arguments)
+        now = new Date().getTime()
+      }
+    }
+  }
+
+  // 函数柯里化
+  function curry(func){
+    return function curriedFunc(...args){
+      if(args.length >= func.length){
+        return func(...args)
+      }else{
+        return function(...curriedArgs){
+          return curriedFunc(...args, ...curriedArgs)
+        }
+      }
+    }
+  }
+
+  // 手写ajax - 非国企先不写
+
+  // 手写深拷贝
+  function deepClone(origin){
+    const type = typeof origin
+    if(type !== 'object'){
+      return origin
+    }else{
+      const result = Array.isArray(origin) ? [] : {}
+      for(let key in origin){
+        if(origin.hasOwnProperty(key)){
+          result[key] = deepClone(origin[key])
+        }
+      }
+      return result
+    }
+  }
+
+  // 实现reduce函数
+
+
+  // react reconciler的render阶段伪代码，如何将fiber节点变为fiber树
+  function PerformUnitOfWork(fiber){
+    // 执行beginWork
+    if(fiber.child){
+      PerformUnitOfWork(fiber.child)
+    }
+
+    // 执行completeWork
+    if(fiber.sibling){
+      PerformUnitOfWork(fiber.sibling)
+    }
+  }
+</script>
+</html>

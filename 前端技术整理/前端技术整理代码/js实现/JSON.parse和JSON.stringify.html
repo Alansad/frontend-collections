@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+  // https://juejin.cn/post/6844903992871354375
+
+  function stringify(json){
+    const type = typeof json
+    const toStringCall = Object.prototype.toString.call(json)
+    if(type === 'object'){
+      if(toStringCall === '[object Function]'){
+        return stringify(json.toJSON())
+      }else if(toStringCall === '[object Null]'){
+        return 'null'
+      }else if(toStringCall === '[object Array]'){
+        // [1, 2, "3", "4"] => '[1, 2, "3", "4"]'
+        let tmp = '['
+        for(let i = 0; i < json.length; i++){
+          tmp += i ? `,${stringify(json[i])}` : stringify(json[i])
+        }
+        tmp += ']'
+        return tmp
+      }else if(toStringCall === '[object Object]'){
+        // {a: 1, b: 2} => '{"a": "1", "b": "2"}'
+        let tmp = []
+        for(let key in json){
+          if(json.hasOwnProperty(key)){
+            tmp.push(`"${stringify(key)}":"${stringify(json[key])}"`)
+          }
+        }
+        return `{${tmp.join(',')}}`
+      }
+    }else if(type === 'number'){
+      return isFinite(json) ? 'null' : json.toString()
+    }else if(toStringCall === '[object undefined]'){
+      return 'null'
+    }
+    try{
+      return json.toString()
+    }catch (e) {
+      console.log(e)
+      return ''
+    }
+  }
+</script>
+</html>

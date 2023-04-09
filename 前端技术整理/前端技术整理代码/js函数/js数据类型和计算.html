@@ -45,18 +45,18 @@
 
     // 模拟一个instanceof
 
-    function _instanceof(A, B){
-        var O = B.prototype;
-        A = A.__proto__;
-        while(true){
-            // Object.prototype.__proto__ === null
-            if(A === null)
-                return false;
-            if(A === O)
-                return true;
-            A = A.__proto__;
-        }
-    }
+    // function _instanceof(A, B){
+    //     var O = B.prototype;
+    //     A = A.__proto__;
+    //     while(true){
+    //         // Object.prototype.__proto__ === null
+    //         if(A === null)
+    //             return false;
+    //         if(A === O)
+    //             return true;
+    //         A = A.__proto__;
+    //     }
+    // }
 
     // 类型转换
     // 字符串拼接
@@ -101,5 +101,9 @@
     // https://www.cnblogs.com/ruoyin/p/9166579.html
     console.log(Infinity === Infinity)
     console.log(NaN === NaN)
+    function isNan(value){
+        return typeof value === 'number' && isNaN(value)
+    }
+    // 辨别NaN https://blog.csdn.net/cc18868876837/article/details/101224974
 </script>
 </html>

@@ -83,7 +83,7 @@
        obj.fn = this
        const args = [...arguments].slice(1)
        return function(...newArgs){
-           obj.fn(...args, ...newArgs)
+           return obj.fn(...args, ...newArgs)
        }
     }
 

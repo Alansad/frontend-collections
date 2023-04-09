@@ -11,6 +11,24 @@
   // https://juejin.cn/post/6946136940164939813#heading-26
   // 手写题大全
 
+
+  // es5继承
+  // https://blog.csdn.net/YANGMENGZHENG/article/details/122474039
+  function Parent(name){
+    this.name = name
+  }
+  Parent.prototype.getName = (name) => {
+    return this.name
+  }
+  function Cat(name){
+    Parent.call(this, name)
+  }
+  // 为了使Cat在改变prototype的方法时不影响到Parent，所以不能用同一个对象
+  Cat.prototype = Object.create(Parent.prototype)
+  Cat.prototype.constructor = Cat
+  // es5和es6继承的区别
+  // https://www.shuzhiduo.com/A/Vx5MkxO7zN/
+
   // 手写Object.create
   Object.prototype.create = function(obj){
     function F(){}
@@ -32,43 +50,79 @@
   }
 
   // 手写new操作符
-  function createObj(func, ...args){
+  function newObj(func, ...args){
     const obj = {}
+    // 没有这个的话，prototype上的getName就没有了
     obj.__proto__ = func.prototype
+    // 不用call的话不行，this直接是window
     return func.call(obj, ...args)
   }
-  function newCat(length, name){
-    this.length = length
+
+  function Cat(name){
     this.name = name
     return this
   }
+  Cat.prototype.getName = () => {
+    return this.name
+  }
+
+  newObj(Cat, '123')
 
   // 手写json.stringify
+  // function stringify(json){
+  //   const type = typeof json
+  //   const toStringCall = Object.prototype.toString.call(json)
+  //   if(type === 'object'){
+  //     if(toStringCall === '[object Null]'){
+  //       return 'null'
+  //     }else if(toStringCall === '[object Function]'){
+  //       return stringify(json.toJSON)
+  //     }else if(toStringCall === '[object Object]'){
+  //       // {a: 1, b: 2} => '{"a":"2", "b": "2"}'
+  //       let tmp = []
+  //       for(let key in json){
+  //         if(json.hasOwnProperty(key)){
+  //           tmp.push(`${stringify(key)}:${stringify(json[key])}`)
+  //         }
+  //       }
+  //       return `{${tmp.join(',')}}`
+  //     }else if(toStringCall === '[object Array]'){
+  //       // [1,2,"3",4] => '[1,2,"3",4]'
+  //       let tmp = '['
+  //       for(let i = 0; i < json.length; i++){
+  //         tmp += i ? `,${stringify(json[i])}` :stringify(json[i])
+  //       }
+  //       tmp += ']'
+  //       return tmp
+  //     }
+  //   }else if(type === 'number'){
+  //     return isFinite(json) ? 'null' : json.toString()
+  //   }else if(type === 'undefined'){
+  //     return 'null'
+  //   }
+  //   try{
+  //     if(json.toJSON){
+  //       return json.toJSON()
+  //     }
+  //     return json.toString()
+  //   }catch (e) {
+  //     console.log(e)
+  //     return ''
+  //   }
+  // }
+
   function stringify(json){
     const type = typeof json
-    const toStringCall = Object.prototype.toString.call(json)
+    const stringType = Object.prototype.toString.call(json)
     if(type === 'object'){
-      if(toStringCall === '[object Null]'){
+      if(stringType === '[object Null]'){
         return 'null'
-      }else if(toStringCall === '[object Function]'){
-        return stringify(json.toJSON)
-      }else if(toStringCall === '[object Object]'){
-        // {a: 1, b: 2} => '{"a":"2", "b": "2"}'
-        let tmp = []
-        for(let key in json){
-          if(json.hasOwnProperty(key)){
-            tmp.push(`${stringify(key)}:${stringify(json[key])}`)
-          }
-        }
-        return `{${tmp.join(',')}}`
-      }else if(toStringCall === '[object Array]'){
-        // [1,2,"3",4] => '[1,2,"3",4]'
-        let tmp = '['
-        for(let i = 0; i < json.length; i++){
-          tmp += i ? `,${stringify(json[i])}` :stringify(json[i])
-        }
-        tmp += ']'
-        return tmp
+      }else if(stringType === '[object Object]'){
+
+      }else if(stringType === '[object Function]'){
+
+      }else if(stringType === '[object Array]'){
+
       }
     }else if(type === 'number'){
       return isFinite(json) ? 'null' : json.toString()
@@ -78,86 +132,115 @@
     try{
       if(json.toJSON){
         return json.toJSON()
+      }else{
+        return json.toString()
       }
-      return json.toString()
-    }catch (e) {
+    }catch (e){
       console.log(e)
       return ''
     }
   }
 
+  // 实现promise.all
+  // promise.all/promise.race等 https://juejin.cn/post/7069805387490263047#heading-1
+  Promise.prototype.all = (promiseList) => {
+    return new Promise((resolve, reject) => {
+      let i = 0
+      const resultList = []
+      promiseList.forEach(promiseOne => {
+        promiseOne.then((res) => {
+          i++
+          resultList.push(res)
+          if(i === promiseList.length){
+            resolve(resultList)
+          }
+        }, reject)
+      })
+    })
+  }
+
+  // Promise.all([promise1, promise2, promise3]).then((resList) => {
+  //
+  // })
+
   // 手写promise
-  const PENDING = 'pending'
-  const RESOLVED = 'resolved'
-  const REJECT = 'reject'
-  function MyPromise(fn){
-    const self = this
-    this.state = PENDING
-    this.value = null
-    this.resolvedCallbacks = []
-    this.rejectCallbacks = []
-    function resolve(value){
-      if(value instanceof MyPromise){
-        return value.then(resolve, reject)
+  const [PENDING, FULFILLED, REJECTED] = ['PENDING', 'FULFILLED', 'REJECTED']
+  class MyPromise {
+    constructor(executor) {
+      this.status = PENDING
+      this.value = undefined
+      this.reason = undefined
+      this.onFulfilledCallbacks = []
+      this.onRejectedCallbacks = []
+      const resolve = (value) => {
+        if (this.status === PENDING) {
+          this.status = FULFILLED
+          this.value = value
+          this.onFulfilledCallbacks.forEach((fn) => fn())
+        }
       }
-      setTimeout(() => {
-        if(self.state === PENDING){
-          self.state = RESOLVED
-          self.value = value
-          self.resolvedCallbacks.forEach(callback => {
-            callback(value)
-          })
+      const reject = (reason) => {
+        if (this.status === PENDING) {
+          this.status = REJECTED
+          this.reason = reason
+          this.onRejectedCallbacks.forEach((fn) => fn())
         }
-      }, 0)
+      }
+      executor(resolve, reject)
     }
-    function reject(value){
-      setTimeout(() => {
-        if(self.state === PENDING){
-          self.state = REJECT
-          self.value = value
-          self.rejectCallbacks.forEach(callback => {
-            callback(value)
-          })
+    then(onFulfilled, onRejected) {
+      if (this.status === FULFILLED) {
+        setTimeout(() => {
+          onFulfilled(this.value)
+        }, 0)
+      }
+
+      if (this.status === REJECTED) {
+        setTimeout(() => {
+          onRejected(this.reason)
+        }, 0)
+      }
+      if (this.status === PENDING) {
+        this.onFulfilledCallbacks.push(() => {
+          onFulfilled(this.value)
+        })
+        this.onRejectedCallbacks.push(() => {
+          onRejected(this.reason)
+        })
+      }
+    }
+
+    all(promiseList){
+      if(!Array.isArray(promiseList)){
+        throw new TypeError('promiseList must be an array')
+      }
+      if(promiseList.some(promise => !(promise instanceof Promise))){
+        throw new TypeError('promiseList item must be a Promise type')
+      }
+      return new MyPromise((resolve, reject) => {
+        try {
+          let counter = 0
+          const { length } = promiseList
+          const resultList = new Array(length)
+          for(let i = 0; i < length; i++){
+            MyPromise.resolve(promiseList[i]).then((res) => {
+              counter++
+              resultList[i] = res
+              if(counter === length){
+                resolve(resultList)
+              }
+            }, (err) => {
+              reject(err)
+            })
+          }
+          reject(new Error('can not get all promise results'))
+        }catch (err){
+          reject(err)
         }
-      }, 0)
-    }
-    try{
-      fn(resolve, reject)
-    }catch (e) {
-      reject(e)
+      })
     }
   }
-  // 实现Promise.then
-  MyPromise.prototype.then = function(onResolved, onRejected){
-    onResolved = typeof onResolved === 'function' ? onResolved : function(value){
-      return value
-    }
-    onRejected = typeof onRejected === 'function' ? onRejected : function(value){
-      return value
-    }
-    if(this.state === PENDING){
-      this.resolvedCallbacks.push(onResolved)
-      this.rejectCallbacks.push(onRejected)
-    }
-    if(this.state === RESOLVED){
-      onResolved(this.value)
-    }
-    if(this.state === REJECT){
-      onRejected(this.value)
-    }
-  }
-  // 实现Promise.catch
-  MyPromise.prototype.catch = function(callback){
-    callback = typeof callback  === 'function' ? callback : function(err){
-      return err
-    }
-    if(this.state === PENDING){
-      this.rejectCallbacks.push(callback)
-    }
-    if(this.state === REJECT){
-      callback(this.value)
-    }
-  }
+
   // 实现Promise.all
   MyPromise.prototype.all = function(promiseList){
     return new MyPromise((resolve, reject) => {
@@ -182,26 +265,38 @@
   }
 
   // 防抖
+  // function debounce(func, wait, immediate){
+  //   let timer = null
+  //   let judge = immediate
+  //   return function(){
+  //     const context = this
+  //     const args = arguments
+  //     if(judge){
+  //       func(...args)
+  //       judge = false
+  //       return
+  //     }
+  //     if(timer !== null){
+  //       clearTimeout(timer)
+  //     }else{
+  //       timer = setTimeout(function(){
+  //         func.apply(context, args)
+  //       }, wait)
+  //     }
+  //   }
+  // }
+
   function debounce(func, wait, immediate){
     let timer = null
-    let judge = immediate
-    return function(){
-      const context = this
-      const args = arguments
-      if(judge){
-        func(...args)
-        judge = false
-        return
+    return function(...args){
+      const that = this
+      if(timer){
+        clearInterval(timer)
       }
-      if(timer !== null){
-        clearTimeout(timer)
-      }else{
-        timer = setTimeout(function(){
-          func.apply(context, args)
-        }, wait)
-      }
+      timer = setTimeout(func.bind(that, ...args), wait)
     }
   }
+
   // 节流
   function throttle(func, wait, immediate){
     let timer = null
@@ -240,9 +335,9 @@
   }
 
   // 函数柯里化
-  function curry(func){
+  function curry(func, length = func.length){
     return function curriedFunc(...args){
-      if(args.length >= func.length){
+      if(args.length >= length){
         return func(...args)
       }else{
         return function(...curriedArgs){
@@ -257,7 +352,7 @@
   // 手写深拷贝
   function deepClone(origin){
     const type = typeof origin
-    if(type !== 'object'){
+    if(type !== 'object' || Object.prototype.toString.call(origin) === '[object Null]'){
       return origin
     }else{
       const result = Array.isArray(origin) ? [] : {}
@@ -285,5 +380,797 @@
       PerformUnitOfWork(fiber.sibling)
     }
   }
+
+  // 快速排序
+  function quickSort(arr, func){
+    if(!arr.length){
+      return []
+    }
+    const compare = func ? func : v => v
+    const target = arr[0]
+    const sliceList = arr.slice(1)
+    const left = []
+    const right = []
+    sliceList.forEach((item) => {
+      if(compare(item) < compare(target)){
+        left.push(item)
+      }else{
+        right.push(item)
+      }
+    })
+    return [...quickSort(left, func), target, ...quickSort(right, func)]
+  }
+
+  const arr = [
+    {
+      label: 'label3',
+      value: 3
+    },
+    {
+      label: 'label2',
+      value: 2
+    },
+    {
+      label: 'label2',
+      value: 2
+    },
+    {
+      label: 'label1',
+      value: 1
+    },
+    {
+      label: 'label1',
+      value: 1
+    },
+    {
+      label: 'label1',
+      value: 1
+    }
+  ]
+
+  quickSort(arr, (item)=> {
+    return item.value
+  })
+
+
+  // 洋葱模型
+  const middleware1 = async (context, next) => {
+    console.log('middleware1-start')
+    next()
+    console.log('middleware1-end')
+  }
+
+  const middleware2 = async (context, next) => {
+    console.log('middleware2-start')
+    next()
+    console.log('middleware2-end')
+  }
+
+  const middleware3 = async (context, next) => {
+    console.log('middleware3-start')
+    next()
+    console.log('middleware3-end')
+  }
+
+  const list = [middleware1, middleware2, middleware3]
+
+  function compose(middlewareList){
+    if(!Array.isArray(middlewareList)){
+      throw new TypeError('middlewareList should be an array type')
+    }
+    if(middlewareList.some(func => typeof func !== 'function')){
+      throw new TypeError('middlewareList item should be a function type')
+    }
+    return function(context, next){
+      let index = -1
+      function dispatch(i){
+        // 如果index和i相同的话，说明在一个middleware中调用了两次next
+        if(i <= index){
+          return Promise.reject(new Error('next() can not be called multiple times'))
+        }
+        index = i
+        let fn = middlewareList[i]
+        if(index === middlewareList.length){
+          fn = next
+        }
+        if(!fn){
+          return Promise.resolve()
+        }
+        try{
+          return Promise.resolve(fn(context, dispatch.bind(null, i + 1)))
+        }catch (err){
+          return Promise.reject(err)
+        }
+      }
+      return dispatch(0)
+    }
+  }
+
+  const runFunc = compose(list)
+
+  // runFunc(ctx, ()=>{})
+
+
+  // 顺时针打印数组
+  function printCircle(arr){
+    if(!arr || !arr.length){
+      return []
+    }
+    const pathList = []
+    let left = 0
+    let right = arr[0].length - 1
+    let up = 0
+    let down = arr.length - 1
+    while(left <= right && up <= down){
+      // 上边界的从左到右
+      for(let j = left; j <= right; j++){
+        pathList.push(arr[up][j])
+      }
+      // 上边界+1
+      up++
+      if(up > down){
+        break;
+      }
+      // 右边界的从上到下
+      for(let i = up; i <= down; i++){
+        pathList.push(arr[i][right])
+      }
+      // 右边界-1
+      right--
+      if(right < left){
+        break;
+      }
+      // 下边界的从右到左
+      for(let j = right; j >= left; j--){
+        pathList.push(arr[down][j])
+      }
+      // 下边界-1
+      down--
+      if(down < up){
+        break;
+      }
+      // 左边界的从下到上
+      for(let i = down; i >= up; i--){
+        pathList.push(arr[i][left])
+      }
+      // 左边界+1
+      left++
+      if(left > right){
+        break;
+      }
+    }
+    return pathList
+  }
+  const testData = [[1, 2, 3, 4], [5, 6, 7, 8], [1, 2, 3, 4], [0, 1, 2, 3]]
+  // const testData = [[1, 2, 3, 4]]
+  console.log(printCircle(testData))
+  // 1 2 3 4
+  // 5 6 7 8
+  // 1 2 3 4
+  // 0 1 2 3
+
+
+  // 一次3个并发请求
+  function MyFetch(url, timeout){
+    return Promise.race([
+      fetch(url),
+      new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(null)
+        }, timeout)
+      })
+    ])
+  }
+
+  function BatchGets(urls, batchNum = 3, timeout = 3000){
+    let ret = []
+    return new Promise((resolve) => {
+      function dispatch(start){
+        if(start >= urls.length){
+          resolve(ret)
+        }
+        const end = Math.min(start + batchNum, urls.length)
+        const promiseList = []
+        for(let i = start; i < end; i++){
+          promiseList.push(MyFetch(urls[i], timeout))
+        }
+        Promise.all(promiseList).then((res) => {
+          ret = [...ret, ...res]
+          dispatch(end)
+        })
+      }
+      dispatch(0)
+    })
+  }
+
+  const fetchList = ['http://weapons.ke.com/mock/1686/api/jzb/house/checkFee', '123', 'http://weapons.ke.com/mock/1686/api/jzb/house/checkFee', 'http://weapons.ke.com/mock/1686/api/jzb/house/checkFee', 'http://weapons.ke.com/mock/1686/api/jzb/house/checkFee']
+
+  BatchGets(fetchList).then((res) => {
+    console.log('看看res', res)
+  })
+
+  // 合并数组区间
+  function Interval(a, b){
+    this.start = a || 0;
+    this.end = b || 0;
+  }
+
+  /**
+   *
+   * @param intervals Interval类一维数组
+   * @return Interval类一维数组
+   */
+  function merge( intervals ) {
+    if(!intervals.length || intervals.length === 1){
+      return intervals
+    }
+    const newIntervals = intervals.map(item => (new Interval(item.start, item.end)))
+    // 排序
+    newIntervals.sort(function(a, b){
+      if(a.start !== b.start){
+        return a.start - b.start
+      }else{
+        return a.end - b.end
+      }
+    })
+    // 合并
+    const res = []
+    res.push(newIntervals[0])
+    for(let i = 1; i < newIntervals.length; i++){
+      const current = newIntervals[i]
+      const latest = res.pop()
+      // 如果相交，合并start
+      if(current.start <= latest.end){
+        /* todo 特别注意这里是小于等于*/
+        res.push(new Interval(latest.start, Math.max(latest.end, current.end)))
+      }else{
+        res.push(latest)
+        res.push(current)
+      }
+    }
+    return res
+  }
+  const testArr = [new Interval(15, 30), new Interval(10, 20), new Interval(40, 50)]
+  console.log(merge(testArr));
+
+
+  // 千分位分割
+  // 5628421.33
+
+  // 0 1 2   3 4 5   6
+  // 1 2 4 , 8 2 6 , 5
+  // 5,628,421
+
+  function format(number){
+    const arr = number.toString().split('.')
+    const dotStr = arr.length > 1 ? `.${arr[1]}` : ''
+    const origin = arr[0].split('').reverse()
+    let result = []
+    for(let i = 0; i < origin.length; i++){
+      if(i !== 0 && i % 3 === 0){
+        result.push(',')
+        result.push(origin[i])
+      }else{
+        result.push(origin[i])
+      }
+    }
+    return result.reverse().join('') + dotStr
+  }
+
+  format(5628421.33)
+
+  // 版本号比较
+  function compare(version1, version2){
+    const version1List = version1.split('.')
+    const version2List = version2.split('.')
+    let i = 0, j = 0
+    while(i < version1List.length || j < version2List.length){
+      const version1Num = version1List[i] ? Number(version1List[i]) : 0
+      const version2Num = version2List[j] ? Number(version2List[j]) : 0
+      if(version1Num - version2Num > 0){
+        return 1
+      }else if(version1Num - version2Num < 0){
+        return -1
+      }
+      i++
+      j++
+    }
+    return 0
+  }
+
+  const a = '1.03.11'
+  const b = '1.03.13'
+
+  console.log(compare(a, b));
+
+
+  // 两数之和
+  /**
+   *
+   * @param numbers int整型一维数组
+   * @param target int整型
+   * @return int整型一维数组
+   */
+  function twoSum( numbers,  target ) {
+    const mapHash = new Map()
+    for(let i = 0; i < numbers.length; i++){
+      const restore = target - numbers[i]
+      if(typeof mapHash.get(restore) !=='undefined'){
+        return [mapHash.get(restore) + 1, i + 1]
+      }else{
+        mapHash.set(numbers[i], i)
+      }
+    }
+    return [-1, -1]
+  }
+
+  const test = [3, 2, 4] // 6
+  const test1 = [0, 4, 3, 0] // 0
+  console.log(twoSum(test1, 0));
+
+
+  // 转换数组到tree
+  const testData = [
+    {
+      id: 1,
+      text: '节点1',
+      parentId: 0 //这里用0表示为顶级节点
+    },
+    {
+      id: 2,
+      text: '节点1_1',
+      parentId: 1 //通过这个字段来确定子父级
+    }
+  ]
+
+  /*
+  转成
+  [
+      {
+          id: 1,
+          text: '节点1',
+          parentId: 0,
+          children: [
+              {
+                  id:2,
+                  text: '节点1_1',
+                  parentId:1
+              }
+          ]
+      }
+  ]
+   */
+
+  function listToTree(origin){
+    const map = {}
+    const tree = []
+    origin.forEach((item) => {
+      map[item.id] = item
+    })
+    origin.forEach(item => {
+      if(item.parentId !== 0){
+        if(!map[item.parentId].children){
+          map[item.parentId].children = []
+        }
+        map[item.parentId].children.push(item)
+      }
+    })
+    for(let key in map){
+      if(map[key].parentId === 0){
+        tree.push(map[key])
+      }
+    }
+    return tree
+  }
+
+  console.log(listToTree(testData));
+
+  // isEqual函数
+  function isObject(data){
+    return typeof data === 'object' && data !== null
+  }
+
+  function isEqual(a, b){
+    // 不是对象，直接比较
+    if(!isObject(a) || !isObject(b)){
+      return a === b
+    }
+    // 如果传入的对象为同一个
+    if(a === b){
+      return true
+    }
+    // 如果对象长度不同
+    if(Object.keys(a).length !== Object.keys(b).length){
+      return false
+    }
+    // 别的都比较了，现在比较key对应的value
+    for(const key in a){
+      if(!isEqual(a[key], b[key])){
+        return false
+      }
+    }
+    return true
+  }
+
+  const a = {
+    1: {
+      aaa: 'bbb'
+    }
+  }
+
+  const b = {
+    1: {
+      aaa: 'bbb'
+    }
+  }
+
+  console.log(isEqual(a, b))
+
+  // LRU算法
+  class LRUCache{
+    constructor(length) {
+      this.length = length
+      this.Map = new Map()
+    }
+    get(key){
+      if(this.Map.has(key)){
+        const value = this.Map.get(key)
+        this.Map.delete(key)
+        this.Map.set(key, value)
+        return value
+      }else{
+        return null
+      }
+    }
+    set(key, value){
+      if(this.Map.has(key)){
+        this.Map.delete(key)
+        this.Map.set(key, value)
+      }else{
+        this.Map.set(key, value)
+      }
+      // 超过length，删除
+      if(this.Map.size > this.length){
+        const key = this.Map.keys().next().value
+        this.Map.delete(key)
+      }
+    }
+  }
+
+  const lruCache = new LRUCache(3);
+
+  lruCache.set(1, 'a')
+  lruCache.set(2, 'aa')
+  lruCache.set(3, 'aaa')
+
+  lruCache.get(1)
+
+  // 异步加法
+  // todo 需要重点复习
+  // 实现一个异步加法
+  function asyncAdd(a, b, callback) {
+    setTimeout(function () {
+      callback(null, a + b);
+    }, 500);
+  }
+
+  // 解决方案
+  // 1. promisify
+  const promiseAdd = (a, b) => new Promise((resolve, reject) => {
+    asyncAdd(a, b, (err, res) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+
+  // 2. 串行处理
+  async function serialSum(...args) {
+    return args.reduce((task, now) => task.then(res => promiseAdd(res, now)), Promise.resolve(0))
+  }
+
+  // 3. 并行处理
+  async function parallelSum(...args) {
+    if (args.length === 1) return args[0]
+    const tasks = []
+    for (let i = 0; i < args.length; i += 2) {
+      tasks.push(promiseAdd(args[i], args[i + 1] || 0))
+    }
+    const results = await Promise.all(tasks)
+    return parallelSum(...results)
+  }
+
+  // 测试
+  (async () => {
+    console.log('Running...');
+    const res1 = await serialSum(1, 2, 3, 4, 5, 8, 9, 10, 11, 12)
+    console.log(res1)
+    const res2 = await parallelSum(1, 2, 3, 4, 5, 8, 9, 10, 11, 12)
+    console.log(res2)
+    console.log('Done');
+  })()
+
+  // 以下为样例
+  // 异步加法
+  function asyncAdd(a,b,cb){
+    setTimeout(() => {
+      cb(null, a + b)
+    }, Math.random() * 1000)
+  }
+
+  async function total(){
+    const res1 = await sum(1,2,3,4,5,6,4)
+    console.log('看看res1', res1)
+    const res2 = await sum(1,2,3,4,5,6,4)
+    console.log('看看res2', res2)
+    return [res1, res2]
+  }
+
+  // Assign方法
+  const assignObj = (target, ...objList) => {
+    objList.forEach(current => {
+      for(let key in current){
+        if(current.hasOwnProperty(key)){
+          target[key] = current[key]
+        }
+      }
+    })
+    return target
+  }
+
+  const a = {
+    1: [1, 2, 3,4],
+    c: 'aaa'
+  }
+
+  const b = {
+    d: function(){},
+    c: {
+      b: 1
+    }
+  }
+
+  assignObj(a, b)
+
+  // 字符串模版替换
+  var a = {
+    b: 123,
+    c: '456',
+    e: '789',
+  }
+  var test = `a{a.b}aa{a.c}aa {a.d}aaaa`;
+  // => 'a123aa456aa {a.d}aaaa'
+
+  function getPop(res, str){
+    const one = res.pop()
+    if(one !== '{'){
+      return getPop(res, one + str)
+    }else{
+      return str
+    }
+  }
+
+  function getResult(str){
+    const strList = str.split('')
+    const res = []
+    for(let i = 0; i < strList.length; i++){
+      const current = strList[i]
+      if(current === '}'){
+        const call = getPop(res, '')
+        const callList = call.split('.')
+        let temp
+        for(let i = 0; i < callList.length; i++){
+          const item = callList[i]
+          if(i === 0){
+            if(typeof window[item] === 'undefined'){
+              temp = `{${call}}`
+              break;
+            }
+            temp = window[item]
+          }else{
+            if(typeof temp[item] === 'undefined'){
+              temp = `{${call}}`
+              break
+            }
+            temp = temp[item]
+          }
+        }
+        if(typeof temp !== "undefined"){
+          res.push(temp)
+        }
+      }else{
+        res.push(current)
+      }
+    }
+    return res.join('')
+  }
+
+  getResult(test)
+
+  // 大数相加
+  let a = "900719925";
+  let b = "12345678999";
+
+  function fillList(arr, length){
+    const tempList = []
+    for(let i = arr.length; i < length; i++){
+      tempList.push(0)
+    }
+    return [...tempList, ...arr]
+  }
+
+  function add(a, b){
+    const length = Math.max(a.length, b.length)
+    const aList = fillList(a.split('').map((item) => Number(item)), length)
+    const bList = fillList(b.split('').map((item) => Number(item)), length)
+    let calc = 0
+    let temp = 0
+    let sum = ''
+    for(let i = length - 1; i >=0; i--){
+      calc = aList[i] + bList[i] + temp
+      temp = Math.floor(calc / 10)
+      sum = calc % 10 + sum
+    }
+    if(temp){
+      sum = temp + sum
+    }
+    return sum
+  }
+
+  add(a, b)
+
+  function multipleFunc(base, multiple){
+    let sum = '0'
+    for(let i = 0; i < multiple; i++){
+      sum = add(sum, base)
+    }
+    return sum
+  }
+
+  multipleFunc(a, 5)
+
+  // 滑动窗口最大值
+  /**
+   * @param {number[]} nums
+   * @param {number} k
+   * @return {number[]}
+   */
+  var maxSlidingWindow = function(nums, k) {
+    const window = []
+    const maxList = []
+    // 第一个滑动窗口
+    for(let i = 0; i < k; i++){
+      window.push(nums[i])
+    }
+    maxList.push(Math.max(...window))
+    for(let i = k; i < nums.length; i++){
+      window.shift()
+      window.push(nums[i])
+      maxList.push(Math.max(...window))
+    }
+    return maxList
+  };
+  maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3)
+
+  // 模拟红绿灯
+  class RailWay{
+    constructor(arr) {
+      this.arr = arr
+    }
+    print(name){
+      console.log(name)
+    }
+    dispatch(i){
+      const { name, wait } = this.arr[i]
+      this.print(name)
+      setTimeout(() => {
+        const next = i === (this.arr.length - 1) ? 0 : (i + 1)
+        this.dispatch(next)
+      }, wait)
+    }
+    run(){
+      this.dispatch(0)
+    }
+  }
+
+  const instance = new RailWay([
+    {
+      name: '红灯',
+      wait: 2000
+    },
+    {
+      name: '黄灯',
+      wait: 1000
+    },
+    {
+      name: '绿灯',
+      wait: 3000
+    }
+  ])
+
+  instance.run()
+
+  // 区别
+  /*
+  日常开发中，经常会使用如下方式创建对象：
+
+  字面量
+  new构造函数
+  Object.create
+
+  那么上述三种方式存在什么区别呢？
+
+  字面量创建和new关键字创建并没有区别，创建的新对象的__proto__都指向Object.prototype，只是字面量创建更高效一些。
+  Object.create() 方法用于创建一个新对象，使用现有的对象来作为新创建对象的原型（prototype）。———— MDN
+
+
+  也就是说Object.create接受两个参数，第一个参数是新创建对象的原型（新创建的对象__proto__指向第一个参数），第二个对象指的是像新创建的对象中添加的属性。
+
+
+  若是第一个参数数是null，那新对象就彻彻底底是个空对象，没有继承Object.prototype上的任何属性和方法，如hasOwnProperty()、toString()等。
+   */
+
+  // 发布订阅模式
+  class EventBus{
+    constructor(name) {
+      // 给EventBus起个名字，唯一
+      this.name = name || (new Date().getTime() + 'name')
+      this.Map = {}
+    }
+    on(key, callback){
+      if(!this.Map[key]){
+        this.Map[key] = []
+      }
+      this.Map[key].push(callback)
+      return this.Map[key].length - 1
+    }
+    emit(key, ...args){
+      if(this.Map[key] && this.Map[key].length){
+        this.Map[key].forEach(callback => {
+          callback(...args)
+        })
+      }
+    }
+    destroy(key){
+      this.Map[key] = undefined
+    }
+    destroyOne(key, i){
+      if(this.Map[key] && this.Map[key].length){
+        this.Map[key].splice(i, 1)
+      }
+    }
+  }
+
+  const test = new EventBus()
+  test.on('aaa', (...args)=> {
+    console.log('看看args', ...args)
+  })
+  test.emit('aaa', 1, 2, 3)
+
+  /*
+    旋转数组的最小数字，非降序数组
+   */
+  function minNumberInRotateArray(rotateArray) {
+      let left = 0
+      let right = rotateArray.length - 1
+      while(left <= right){
+        let mid = Math.floor((left + right) / 2)
+        // 1 2 3 4 5 6
+        // 3 4 5 6 1 2
+        if(rotateArray[mid] > rotateArray[right]){
+          left = mid + 1
+        }else if(rotateArray[mid] === rotateArray[right]){
+          // 1 0 1 1 1
+          right--
+        }else{
+          // 1 0 1 1
+          right = mid
+        }
+      }
+      return rotateArray[left]
+  }
+  //
 </script>
 </html>

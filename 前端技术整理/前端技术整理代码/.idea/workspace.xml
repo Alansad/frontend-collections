@@ -1,124 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3ffc2bf6-c586-47a5-a364-2b10c31a498a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/面试题汇总.html" afterPath="$PROJECT_DIR$/面试题汇总.html" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shell.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js函数/js数据类型和计算.html" beforeDir="false" afterPath="$PROJECT_DIR$/js函数/js数据类型和计算.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js实现/手写题.html" beforeDir="false" afterPath="$PROJECT_DIR$/js实现/手写题.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js技巧/call_apply_bind.html" beforeDir="false" afterPath="$PROJECT_DIR$/js技巧/call_apply_bind.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/.tmp/" />
-    <ignored path="$PROJECT_DIR$/temp/" />
-    <ignored path="$PROJECT_DIR$/tmp/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="select组件.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/select组件.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="记录.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/记录.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="65" column="26" lean-forward="false" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="组内分享演示.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/组内分享演示.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="百度工作总结.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/百度工作总结.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="安全.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/安全.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="50" lean-forward="false" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="practice.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/practice.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="b.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/b.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-82">
-              <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="黑科技.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/黑科技.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-232">
-              <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="面试题汇总.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/面试题汇总.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="轮播.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/轮播.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-322">
-              <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -127,78 +41,14 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>num</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/网络/TCP3次4次详解.html" />
-        <option value="$PROJECT_DIR$/网络/CORS.html" />
-        <option value="$PROJECT_DIR$/css/iconfont和svg.html" />
-        <option value="$PROJECT_DIR$/css/iconfont和svg和canvas.html" />
-        <option value="$PROJECT_DIR$/优化相关/多图片优化.html" />
-        <option value="$PROJECT_DIR$/js实现/js异步编程的方法.html" />
-        <option value="$PROJECT_DIR$/es6/实现一个promise.html" />
-        <option value="$PROJECT_DIR$/网络/cookie.html" />
-        <option value="$PROJECT_DIR$/css/水平垂直居中的方法.html" />
-        <option value="$PROJECT_DIR$/js函数/new操作符具体过程.html" />
-        <option value="$PROJECT_DIR$/Vue/vue响应式对象.html" />
-        <option value="$PROJECT_DIR$/HTML/input_check.html" />
-        <option value="$PROJECT_DIR$/css/BFC.html" />
-        <option value="$PROJECT_DIR$/css/table和table-cell.html" />
-        <option value="$PROJECT_DIR$/网络/解析url.html" />
-        <option value="$PROJECT_DIR$/js实现/实现tap事件.html" />
-        <option value="$PROJECT_DIR$/网络/http请求头字段.html" />
-        <option value="$PROJECT_DIR$/js实现/正则表达式.html" />
-        <option value="$PROJECT_DIR$/es6/map函数.html" />
-        <option value="$PROJECT_DIR$/css/重绘和重排.html" />
-        <option value="$PROJECT_DIR$/js实现/js继承.html" />
-        <option value="$PROJECT_DIR$/js技巧/判断是否滑动到底部.html" />
-        <option value="$PROJECT_DIR$/js技巧/es5实现promise.html" />
-        <option value="$PROJECT_DIR$/js函数/遍历相关方法.html" />
-        <option value="$PROJECT_DIR$/js实现/resize事件的实现.html" />
-        <option value="$PROJECT_DIR$/js实现/防抖和节流.html" />
-        <option value="$PROJECT_DIR$/js技巧/前端缓存.html" />
-        <option value="$PROJECT_DIR$/es6/set函数.html" />
-        <option value="$PROJECT_DIR$/网络/前端缓存.html" />
-        <option value="$PROJECT_DIR$/浏览器相关/eventloop.html" />
-        <option value="$PROJECT_DIR$/网络/WebSocket.html" />
-        <option value="$PROJECT_DIR$/浏览器相关/浏览器的组成.html" />
-        <option value="$PROJECT_DIR$/css/img还是background-image.html" />
-        <option value="$PROJECT_DIR$/算法/排序算法/快速排序.html" />
-        <option value="$PROJECT_DIR$/浏览器相关/浏览器的js线程.html" />
-        <option value="$PROJECT_DIR$/js技巧/js实现懒加载.html" />
-        <option value="$PROJECT_DIR$/practice.html" />
-        <option value="$PROJECT_DIR$/js实现/js事件委托.html" />
-        <option value="$PROJECT_DIR$/nodejs/nodejs初识.html" />
-        <option value="$PROJECT_DIR$/算法/排序算法.html" />
-        <option value="$PROJECT_DIR$/网络/强缓存vs协商缓存.html" />
-        <option value="$PROJECT_DIR$/记录.html" />
-        <option value="$PROJECT_DIR$/Vue/用法/filter.html" />
-        <option value="$PROJECT_DIR$/echarts/original.html" />
-        <option value="$PROJECT_DIR$/数据库错误/mysql/安装错误.html" />
-        <option value="$PROJECT_DIR$/开源/开源示范.html" />
-        <option value="$PROJECT_DIR$/css/css像素.html" />
-        <option value="$PROJECT_DIR$/多行文本定制省略.html" />
-        <option value="$PROJECT_DIR$/b.html" />
-        <option value="$PROJECT_DIR$/算法/前端中的算法.html" />
-        <option value="$PROJECT_DIR$/面试题汇总.html" />
-      </list>
-    </option>
   </component>
   <component name="JsBowerSettings">
     <node-interpreter value="project" />
     <exe-path />
     <config-path />
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
@@ -206,130 +56,31 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="10" />
-    <option name="y" value="58" />
-    <option name="width" value="1270" />
-    <option name="height" value="738" />
-  </component>
+  <component name="ProjectId" id="2BSYBnLeLfbBEEH9J7c62xgG6sv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="IScroll源码研究" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="js函数" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="js技巧" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="优化相关" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="数据库错误" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="数据库错误" type="462c0819:PsiDirectoryNode" />
-              <item name="mysql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="架构" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="架构" type="462c0819:PsiDirectoryNode" />
-              <item name="构件" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="架构" type="462c0819:PsiDirectoryNode" />
-              <item name="构件" type="462c0819:PsiDirectoryNode" />
-              <item name="设计模式" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="浏览器相关" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="算法" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="网络" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="前端技术整理代码" type="b2602c69:ProjectViewProjectNode" />
-              <item name="前端技术整理代码" type="462c0819:PsiDirectoryNode" />
-              <item name="运行环境" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="8.1.4" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.22.12" />
+    <property name="javascript.nodejs.core.library.typings.version" value="12.20.55" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -345,24 +96,17 @@
       <recent name="$PROJECT_DIR$/js实现" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
   <component name="RunManager">
-    <configuration name="js数据类型和计算.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/前端技术整理代码/js函数/js数据类型和计算.html" />
+    <configuration name="js数据类型和计算.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/前端技术整理代码/js函数/js数据类型和计算.html">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.js数据类型和计算.html" />
+      </list>
+    </recent_temporary>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -430,289 +174,113 @@
       <workItem from="1550735744576" duration="3000" />
       <workItem from="1550745201120" duration="27000" />
       <workItem from="1551709003706" duration="286000" />
+      <workItem from="1656900821704" duration="3720000" />
+      <workItem from="1656939589617" duration="746000" />
+      <workItem from="1657175646675" duration="1394000" />
+      <workItem from="1657265420514" duration="63000" />
+      <workItem from="1657266541954" duration="17000" />
+      <workItem from="1658300413168" duration="3000" />
+      <workItem from="1663568909561" duration="115000" />
+      <workItem from="1664354680801" duration="886000" />
+      <workItem from="1664605213598" duration="2062000" />
+      <workItem from="1665280623864" duration="14000" />
+      <workItem from="1676342360539" duration="11278000" />
+      <workItem from="1676368002920" duration="3291000" />
+      <workItem from="1676428714528" duration="103000" />
+      <workItem from="1676430195371" duration="26000" />
+      <workItem from="1676430314489" duration="390000" />
+      <workItem from="1676449800500" duration="58000" />
+      <workItem from="1676451233733" duration="164000" />
+      <workItem from="1676543252573" duration="21000" />
+      <workItem from="1677228794594" duration="587000" />
+      <workItem from="1678070047195" duration="66000" />
+      <workItem from="1678070329023" duration="15000" />
+      <workItem from="1678070470348" duration="9000" />
+      <workItem from="1678070527185" duration="22000" />
+      <workItem from="1678070678355" duration="74000" />
+      <workItem from="1678075095522" duration="32000" />
+      <workItem from="1678075624309" duration="8000" />
+      <workItem from="1678076217359" duration="22000" />
+      <workItem from="1678082699821" duration="13000" />
+      <workItem from="1678084494760" duration="6406000" />
+      <workItem from="1678093595139" duration="16000" />
+      <workItem from="1678095163011" duration="7000" />
+      <workItem from="1678095262747" duration="321000" />
+      <workItem from="1678154973169" duration="146000" />
+      <workItem from="1678155208346" duration="35000" />
+      <workItem from="1678159312154" duration="17000" />
+      <workItem from="1678159400044" duration="15000" />
+      <workItem from="1678159720964" duration="14000" />
+      <workItem from="1678160454848" duration="125000" />
+      <workItem from="1678170356431" duration="165000" />
+      <workItem from="1678171306151" duration="29000" />
+      <workItem from="1678173252786" duration="8000" />
+      <workItem from="1678177020582" duration="22000" />
+      <workItem from="1678192970035" duration="29000" />
+      <workItem from="1678246916412" duration="24000" />
+      <workItem from="1678247012183" duration="8000" />
+      <workItem from="1678707438318" duration="6000" />
+      <workItem from="1678707846418" duration="617000" />
+      <workItem from="1678709549658" duration="2198000" />
+      <workItem from="1679552174587" duration="2421000" />
+      <workItem from="1679554691618" duration="830000" />
+      <workItem from="1679555872050" duration="24000" />
+      <workItem from="1679556123709" duration="13000" />
+      <workItem from="1679644684478" duration="17000" />
+      <workItem from="1679646043301" duration="7000" />
+      <workItem from="1679646355207" duration="9000" />
+      <workItem from="1679648862334" duration="1759000" />
+      <workItem from="1679883506833" duration="166000" />
+      <workItem from="1679884862605" duration="2509000" />
+      <workItem from="1679887521590" duration="7000" />
+      <workItem from="1679889085470" duration="536000" />
+      <workItem from="1679896978777" duration="5000" />
+      <workItem from="1679898539215" duration="15000" />
+      <workItem from="1679901045209" duration="594000" />
+      <workItem from="1679902181273" duration="4810000" />
+      <workItem from="1679925275997" duration="344000" />
+      <workItem from="1679925799847" duration="705000" />
+      <workItem from="1679928372892" duration="5000" />
+      <workItem from="1679928380123" duration="2000" />
+      <workItem from="1679968864861" duration="3818000" />
+      <workItem from="1679973414666" duration="1726000" />
+      <workItem from="1679976936282" duration="15000" />
+      <workItem from="1679978210697" duration="11000" />
+      <workItem from="1679983972723" duration="1318000" />
+      <workItem from="1680004085050" duration="19000" />
+      <workItem from="1680058763690" duration="604000" />
+      <workItem from="1680502740101" duration="29000" />
+      <workItem from="1680602608843" duration="6448000" />
+      <workItem from="1680881047959" duration="8000" />
+      <workItem from="1680881066767" duration="176000" />
+      <workItem from="1680967509762" duration="36000" />
     </task>
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="302706000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="10" y="58" width="1270" height="738" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24979983" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-    </layout>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/数据库错误/mysql/安装错误.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IScroll源码研究/大概原理.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/css像素.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/记录.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="60" column="43" lean-forward="false" selection-start-line="60" selection-start-column="43" selection-end-line="60" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/多行文本定制省略.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/b.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/css选择器解析顺序.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/算法/前端中的算法.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/echarts/original.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="78" column="36" lean-forward="false" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js函数/js字符操作函数split_splice_slice_replace_trim.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="73" lean-forward="true" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js技巧/动态加载js.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="8" lean-forward="true" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js函数/遍历相关方法.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js技巧/es5实现promise.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/数据库错误/mysql/安装错误.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="27" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/IScroll源码研究/大概原理.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/css选择器解析顺序.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/算法/前端中的算法.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="39" lean-forward="true" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/css像素.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/多行文本定制省略.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/select组件.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/practice.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/b.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-82">
-          <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/黑科技.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-232">
-          <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/轮播.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-322">
-          <caret line="18" column="26" lean-forward="true" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/安全.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="50" lean-forward="false" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/百度工作总结.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/组内分享演示.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/记录.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="65" column="26" lean-forward="false" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/面试题汇总.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+  <component name="WindowStateProjectService">
+    <state x="418" y="185" width="604" height="492" key="find.popup" timestamp="1664606679734">
+      <screen x="0" y="23" width="1440" height="819" />
+    </state>
+    <state x="418" y="184" width="604" height="490" key="find.popup/0.23.1440.816@0.23.1440.816" timestamp="1656900855434" />
+    <state x="418" y="185" width="604" height="492" key="find.popup/0.23.1440.819@0.23.1440.819" timestamp="1664606679734" />
+    <state x="385" y="163" width="670" height="676" key="search.everywhere.popup" timestamp="1656906855465">
+      <screen x="0" y="23" width="1440" height="816" />
+    </state>
+    <state x="385" y="163" width="670" height="676" key="search.everywhere.popup/0.23.1440.816@0.23.1440.816" timestamp="1656906855465" />
   </component>
 </project>

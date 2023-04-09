@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var page1 = 3 + 2 + 2 + 2 + 5 + 3 + 3 + 15 + 5 + 3 + 5 + 5
+    var page2 = 3 + 2 + 1 + 2 + 2 + 2 + 2 + 2 + 2 + 3 + 3 + 2
+    var page3 = 2 + 2 + 4 + 2 + 2 + 2 + 3 + 10 + 2 + 3 + 2 + 3
+    var page4 = 2 + 2 + 2 + 10 + 5 + 2 + 2 + 2 + 2 + 2 + 2 + 2
+    var page5 = 10 + 3 + 2 + 2 + 2 + 2 + 2 + 1 + 2 + 3 + 2 + 2
+    var page6 = 2 + 2 + 2 + 5 + 2 + 2 + 2 + 4 + 2 + 3 + 2 + 2
+    var page7 = 2 + 3 + 2 + 3 + 2 + 2 + 3 + 3 + 5 + 2 + 3 + 5
+    var page8 = 2 + 2 + 2 + 10 + 2 + 2 + 2 + 2 + 2 + 3 + 3 + 10
+    var page9 = 3 + 20 + 3 + 2 + 2 + 10 + 2 + 2 + 2 + 2 + 3 + 2
+    var page10 = 10 + 2 + 3 + 10
+    // const amount = page1 + page2 + page3 + page4 + page5 + page6 + page7 + page8 + page9 + page10
+    const amount = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].reduce((pre, current, index, arr) => {
+        console.log('看看current', window[`page${current}`])
+        return pre + window[`page${current}`]
+    }, 0)
+    console.log('看看amount', amount)
+</script>
+</body>
+</html>
